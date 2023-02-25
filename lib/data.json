@@ -1,0 +1,29 @@
+[{
+    "name": "ecouteur",
+    "description": "ecouteur de bon qualité",
+    "price": 200,
+    "category": "ecouteur",
+    "picture": "/products/airpords.png"
+  },
+  {
+    "name": "ecouteur",
+    "description": "ecouteur de bon qualité",
+    "price": 200,
+    "category": "ecouteur",
+    "picture": "/products/airpords.png"
+  },
+  {
+    "name": "ecouteur",
+    "description": "ecouteur de bon qualité",
+    "price": 200,
+    "category": "ecouteur",
+    "picture": "/products/airpords.png"
+  },
+  {
+    "name": "ecouteur",
+    "description": "ecouteur de bon qualité",
+    "price": 200,
+    "category": "ecouteur",
+    "picture": "/products/airpords.png"
+  }
+]

@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { GlobalStyle } from '../styles/globalStyle'
 import Footer from './Footer'
 import { ProductContext } from './ProductContext'
 
@@ -16,7 +18,8 @@ const Layout = ({children}) => {
     }
   },[])
   return (
-    <div>
+    <Container>
+      <GlobalStyle/>
         <div className='p-4'>
           {success? (
           <div className='mb-5 bg-green-400 text-white text-lg p-5 rounded-xl'>
@@ -28,8 +31,14 @@ const Layout = ({children}) => {
             {children}
         </div>
         <Footer/>
-    </div>
+    </Container>
   )
 }
 
 export default Layout
+
+const Container = styled.div`
+ 
+ 
+
+`

@@ -18,6 +18,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "stripe": "^10.15.0",
+    "styled-components": "^5.3.6",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss": "^3.1.8",
     "use-local-storage-state": "^18.1.1"

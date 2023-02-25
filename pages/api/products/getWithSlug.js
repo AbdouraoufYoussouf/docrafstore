@@ -6,19 +6,18 @@ import Product from "../../../models/Products";
  * @param {import('next').NextApiResponse} res 
  */
 
-export default async function getAll(req, res) {
-    
+export default async function getWithSlug(req, res) {
+    const { slug } = req.query
+    if (slug) {
         try {
-
-            await connectMongo();
-            console.log("Connexted To mongo")
-
-            const product = await Product.find()
-            res.json(product)
+            res.json(
+                await Product.find({'slug':slug}).exec()
+            )
         } catch (error) {
             console.log(error)
             res.json({ error })
         }
-    
+
+    }
 
 }
