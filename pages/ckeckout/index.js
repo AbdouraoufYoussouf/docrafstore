@@ -23,10 +23,12 @@ const CkeckoutPage = () => {
   }
 
   useEffect(() => {
-    const uniqIds = [...new Set(selectProducts)];
-    fetch("api/products/getWithId?ids=" + uniqIds.join(","))
-      .then((res) => res.json())
-      .then((json) => setProductInfo(json));
+    if(selectProducts?.length > 0){
+      const uniqIds = [...new Set(selectProducts)];
+      fetch("api/products/getWithId?ids=" + uniqIds.join(","))
+        .then((res) => res.json())
+        .then((json) => setProductInfo(json));
+    }
   }, [selectProducts]);
 
   let livraison = 12;
