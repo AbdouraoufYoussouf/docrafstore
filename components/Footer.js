@@ -38,7 +38,7 @@ const Footer = () => {
       <Link href={"/ckeckout"} className="nav-link">
         <span style={{position:"relative"}}>
           <FaShoppingBag color={path.includes("ckeckout") && "hsl(43, 100%, 68%)"} size={30} />
-          {selectProducts.length && <span className="bag">{selectProducts.length}</span>}
+          {selectProducts.length!==0 && <span className="bag">{selectProducts.length}</span>}
         </span>
       </Link>
     </Foter>
