@@ -27,6 +27,27 @@ export const GlobalStyle = createGlobalStyle`
   .image-card{
     cursor: pointer;
   }
+  .quantity-desc {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 0 10px;
+    border-radius: 7px;
+  }
+  .quantity-desc span {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+  .quantity-desc .minus {
+    cursor: pointer;
+  }
+  .quantity-desc .num {
+    font-size: 20px;
+  }
+  .quantity-desc .plus {
+    cursor: pointer;
+   
+  }
   /* @media (prefers-color-scheme: dark) {
   .card,
   .footer {

@@ -3,6 +3,8 @@ import Link from "next/link";
 import styled from "styled-components";
 
 const HeroHeader = ({ heroBanner }) => {
+ let name = heroBanner?.name
+  const path = name?.split(" ").join("_");
   return (
     <BannerContainer>
       <p className="beats-solo">{heroBanner?.name}</p>
@@ -14,7 +16,7 @@ const HeroHeader = ({ heroBanner }) => {
         className="hero-banner-image"
       />
       <div>
-        <Link href={`/product/${heroBanner?.name}`}>
+        <Link href={`/product/${path}`}>
           <button>Voir le produit</button>
         </Link>
         <div className="desc">

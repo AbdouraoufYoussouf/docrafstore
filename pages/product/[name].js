@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { AiOutlineMinus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { FaPlusSquare,FaMinusSquare  } from 'react-icons/fa';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import connectMongo from '../../lib/connectMongo';
 import Product from '../../models/Products'
 
@@ -18,12 +17,13 @@ const ProductDetails = ({ products }) => {
 
   const [index, setIndex] = useState(0);
   //console.log("product:", product)
-  const [quantity, setQuantity] = useState(0)
 
-  const { setSelectProducts } = useContext(ProductContext);
+  const { addProductCart } = useContext(ProductContext);
 
-  function addProductCart() {
-    setSelectProducts((prev) => [...prev, product?._id]);
+ 
+  function buyNow(id) {
+    addProductCart(id)
+    router.push('/ckeckout');
   }
 
   return (
@@ -57,17 +57,10 @@ const ProductDetails = ({ products }) => {
           <h4>Details: </h4>
           <p>{product?.description}</p>
           <p className="price">${product?.price}</p>
-          <div className="quantity">
-            <h3>Quantity:</h3>
-            <div className="quantity-desc">
-             <FaMinusSquare className='btn' size={30} />
-              <span className="num">{quantity}</span>
-              <FaPlusSquare className='btn' size={30} />
-            </div>
-          </div>
+        
           <div className="buttons">
-            <button onClick={addProductCart} type="button" className="add-to-cart" >Add to Cart</button>
-            <button type="button" className="buy-now" >Buy Now</button>
+            <button onClick={()=> addProductCart(product._id)} type="button" className="add-to-cart" >Add to Cart</button>
+            <button onClick={()=> buyNow(product._id)} type="button" className="buy-now" >Buy Now</button>
           </div>
         </ProductDescription>
       </DetailContainer> 

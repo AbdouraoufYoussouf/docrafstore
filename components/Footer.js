@@ -12,35 +12,40 @@ const Footer = () => {
   const router = useRouter();
   const path = router.pathname;
   const { selectProducts } = useContext(ProductContext);
+  let length = selectProducts?.length
+
+ 
 
   return (
-    <Foter className="text-gray-400">
+    <Foter >
+      <>
       <Link href={"/"} className="nav-link">
         <span>
-          <AiFillHome color={path ==="/" && "hsl(43, 100%, 68%)"} size={30} />
+          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :""} size={30} />
         </span>
       </Link>
       <Link href={"/smartphone"} className="nav-link">
         <span>
-          <BsPhoneFill color={path.includes("smartphone") && "hsl(43, 100%, 68%)"} size={30} />
+          <BsPhoneFill color={path.includes("smartphone") ? "hsl(43, 100%, 68%)" :""} size={30} />
         </span>
       </Link>
       <Link href={"/pc"} className="nav-link">
         <span>
-          <MdOutlineComputer color={path.includes("pc") && "hsl(43, 100%, 68%)"} size={30} />
+          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :""} size={30} />
         </span>
       </Link>
       <Link href={"/ecouteur"} className="nav-link">
         <span>
-          <FaHeadphones color={path.includes("ecouteur") && "hsl(43, 100%, 68%)"} size={30} />
+          <FaHeadphones color={path.includes("ecouteur") ? "hsl(43, 100%, 68%)" :""} size={30} />
         </span>
       </Link>
       <Link href={"/ckeckout"} className="nav-link">
-        <span style={{position:"relative"}}>
-          <FaShoppingBag color={path.includes("ckeckout") && "hsl(43, 100%, 68%)"} size={30} />
-          {selectProducts?.length!==0 |selectProducts?.length  && <span className="bag">{selectProducts?.length}</span>}
-        </span>
+        <div style={{position:"relative"}}>
+          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :""} size={30} />
+          {length>0  && <span className="bag">{length}</span>}
+        </div>
       </Link>
+      </>
     </Foter>
   );
 };
@@ -74,5 +79,7 @@ const Foter = styled.footer`
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: absolute;
+  line-height: 20px;
   }
 `;

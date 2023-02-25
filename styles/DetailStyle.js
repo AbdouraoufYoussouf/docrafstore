@@ -135,27 +135,7 @@ export const ProductDescription = styled.div`
   .buttons .buy-now:hover {
     transform: scale(1.1, 1.1);
   }
-  .quantity-desc {
-    display: flex;
-    align-items: center;
-    border: 1px solid gray;
-    padding: 5px 10px;
-  }
-  .quantity-desc span {
-    font-size: 16px;
-    padding: 6px 12px;
-    cursor: pointer;
-  }
-  .quantity-desc .minus {
-    border-right: 1px solid gray;
-    color: #f02d34;
-  }
-  .quantity-desc .num {
-    font-size: 20px;
-  }
-  .quantity-desc .plus {
-    color: rgb(49, 168, 49);
-  }
+  
   @media screen and (max-width: 900px) {
     width: 95%;
   }

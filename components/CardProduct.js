@@ -4,12 +4,10 @@ import { ProductContext } from "./ProductContext";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 
 const CardProduct = ({ product }) => {
-  const { setSelectProducts } = useContext(ProductContext);
+  const {selectProducts, addProductCart } = useContext(ProductContext);
 
-  function addProductCart() {
-    setSelectProducts((prev) => [...prev, product?._id]);
-  }
   
+  console.log(selectProducts?.length)
   const name = product?.name;
   const path = name.split(" ").join("_");
 
@@ -40,7 +38,7 @@ const CardProduct = ({ product }) => {
         </p>
         <div className="flex mt-1">
           <div className="text-2xl font-bold grow">${product?.price}</div>
-          <button onClick={addProductCart}>
+          <button onClick={()=> addProductCart(product._id)}>
             {" "}
             <FaPlusSquare className="btn bg-emerald-400" size={30} />
           </button>
