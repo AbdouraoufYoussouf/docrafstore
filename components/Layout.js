@@ -20,7 +20,7 @@ const Layout = ({children}) => {
   return (
     <Container>
       <GlobalStyle/>
-        <div className='p-4'>
+        <div className='p-4 mb-4'>
           {success? (
           <div className='mb-5 bg-green-400 text-white text-lg p-5 rounded-xl'>
             Votre commande a bien éffectué avec successé , AnsumatiBoutique vous remercie!!

@@ -23,7 +23,7 @@ const ProductDetails = ({ products }) => {
   const { setSelectProducts } = useContext(ProductContext);
 
   function addProductCart() {
-    setSelectProducts((prev) => console.log(prev));
+    setSelectProducts((prev) => [...prev, product?._id]);
   }
 
   return (
@@ -66,7 +66,7 @@ const ProductDetails = ({ products }) => {
             </div>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" >Add to Cart</button>
+            <button onClick={addProductCart} type="button" className="add-to-cart" >Add to Cart</button>
             <button type="button" className="buy-now" >Buy Now</button>
           </div>
         </ProductDescription>
