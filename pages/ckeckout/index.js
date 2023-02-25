@@ -101,7 +101,7 @@ const CkeckoutPage = () => {
       >
         Payé {total} Dhs
       </button>
-      {show && (
+      {show && selectProducts?.length >0 && (
         <ModalUser
           toggleModal={toggleModal}
           total={total}
