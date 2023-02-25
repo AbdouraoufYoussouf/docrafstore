@@ -49,7 +49,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
   return (
     <Modal>
         <div className="modal">
-            <span > Modal</span>
+            <span style={{display:'none'}}> Modal</span>
           <div className="modal-header">
             <h2>Confirmé la commande</h2>
             <button style={{ color: "tomato" }} onClick={toggleModal}>
