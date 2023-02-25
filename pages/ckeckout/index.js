@@ -47,8 +47,8 @@ const CkeckoutPage = () => {
   };
   return (
     <>
-      {!productInfo.length && <div>pas de produt dans le panier</div>}
-      {productInfo.length &&
+      {productInfo.length<0 && <div>pas de produit dans le panier</div>}
+      {productInfo.length>0 &&
         productInfo.map((product) => (
           <div key={product._id} className="flex mb-5">
             <div className="bg-gray-100 p-3 rounded-xl shrink-0">
