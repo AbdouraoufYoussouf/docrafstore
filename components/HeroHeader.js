@@ -163,12 +163,12 @@ const BannerLeft = styled.div`
       font-size: 20px;
     }
     .name{
-      font-size: 30px;
+      font-size: 25px;
     }
     .shopnow{
       font-size: 14px;
       padding: 10px 5px;
-      width: 90%;
+      width: 80%;
     }
     .call{
       font-size: 14px;
@@ -203,8 +203,8 @@ const BannerCenter = styled.div`
     img{
       position: absolute;
       height: 50%;
-      left: 20%;
-      bottom: 30px;
+      left: 30%;
+      bottom: 40px;
     }
   }
 `;
