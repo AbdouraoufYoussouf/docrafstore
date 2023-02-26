@@ -202,12 +202,13 @@ const BannerCenter = styled.div`
     background-color: red;
     img{
       position: absolute;
-      height: 60%;
+      height: 50%;
       left: 20%;
       bottom: 30px;
     }
   }
 `;
+
 const BannerRight = styled.div`
   display: flex;
   flex-direction: column;
