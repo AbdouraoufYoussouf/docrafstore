@@ -1,29 +1,46 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { SlCallIn } from "react-icons/sl";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 const HeroHeader = ({ heroBanner }) => {
- let name = heroBanner?.name
+  let name = heroBanner?.name
   const path = name?.split(" ").join("_");
   return (
     <BannerContainer>
-      <p className="beats-solo">{heroBanner?.name}</p>
-      <h3>{heroBanner?.name}</h3>
-      <h1>The Best</h1>
-      <img
-        src={heroBanner?.picture}
-        alt="casques"
-        className="hero-banner-image"
-      />
-      <div>
-        <Link href={`/product/${path}`}>
-          <button>Voir le produit</button>
+      <BannerLeft>
+        <div className="top">
+
+          <p className="new">new and modern</p>
+          <h2 className="name">Headphone 15 pro</h2>
+          <p className="offer">aujourd’hui derniere offre </p>
+          <Link href={`/product/${path}`} className="shopnow">
+          Voir le produit
         </Link>
-        <div className="desc">
-          <h5>Description</h5>
-          <p>{heroBanner?.description}</p>
         </div>
-      </div>
+        <div className="bottom">
+          <SlCallIn className="b-left" />
+          <span className="b-rigth">
+            <p className="call">Appel pour livraison</p>
+            <p className="number">0633851644</p>
+          </span>
+        </div>
+      </BannerLeft>
+      <BannerCenter>
+        <img src={heroBanner?.picture} />
+      </BannerCenter>
+      <BannerRight>
+        <div className="top">
+          <span className="pourc">50%</span>
+          <span className="off">OFF</span>
+        </div>
+        <div className="bottom">
+          <FaFacebook  className="social" />
+          <FaInstagram className="social" />
+          <FaTiktok className="social" />
+        </div>
+      </BannerRight>
     </BannerContainer>
   );
 };
@@ -31,109 +48,201 @@ const HeroHeader = ({ heroBanner }) => {
 export default HeroHeader;
 
 const BannerContainer = styled.div`
-  margin-top: 20px;
-  padding: 60px 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 30px 40px;
   background-color: #dcdcdc;
   border-radius: 15px;
   position: relative;
-  height: 500px;
+  height: 400px;
   line-height: 0.9;
   width: 100%;
+  background-image: linear-gradient(
+    to right top,
+    #b3bdcd,
+    #8bc5db,
+    #5ecfcb,
+    #6cd29b,
+    #a8cb5d
+  );
+  @media screen and (max-width:800px) {
+    padding:10px;
+  }
+`;
+const BannerLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3rem;
+    color: hsl(244, 16%, 43%);
 
-  .beats-solo {
-    font-size: 20px;
-  }
-  button {
-    border-radius: 15px;
-    padding: 10px 16px;
-    background-color: #f02d34;
-    color: white;
-    border: none;
-    margin-top: 40px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    z-index: 10000 !important;
-  }
-  h3 {
-    font-size: 4rem;
-    margin-top: 4px;
-  }
-  h1 {
-    color: white;
-    font-size: 10em;
-    margin-left: -20px;
+  .top{
+    font-style: italic;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      font-family: Andale Mono, monospace;
+    }
+    .new{
+      font-weight: bold;
+      font-size: 25px;
+    }
+    .name{
+      font-weight: 900;
+      font-size: 60px;
+      color: tomato;
+    }
+    .shopnow{
+      font-weight: bold;
+      font-size: 20px;
+      background-color: tomato;
+      padding: 15px 8px;
+      text-transform: uppercase;
+      border-radius: 7px;
+      color: white;
+      width: 50%;
+      z-index: 10;
+    }
+
+    //bottom
+.bottom{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.b-left{
+  align-self: center;
+  font-size: 35px;
+  color: tomato;
+}
+.b-rigth{
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  align-self: center;
+  
+}
+  .call{
+    font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
   }
-  .hero-banner-image {
-    position: absolute;
-    top: 0%;
-    right: 20%;
-    width: 450px;
-    height: 450px;
+  .number{
+    font-weight: 900;
+    font-size: 20px;
+    font-family: monospace;
   }
-  .desc {
-    position: absolute;
-    right: 3%;
-    bottom: 5%;
-    width: 300px;
-    line-height: 1.3;
-    display: flex;
-    flex-direction: column;
-    color: #324d67;
-  }
-  .desc p {
-    color: #5f5f5f;
-    font-weight: 100;
-    text-align: justify;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-  }
-  .desc h5 {
-    margin-bottom: 12px;
-    font-weight: 700;
-    font-size: 16px;
-    /* color: black; */
-    align-self: center;
-  }
-
-  @media screen and (max-width: 800px) {
-    height: 560px;
-
-    .hero-banner-image {
-      width: 77%;
-      height: 62%;
-      top: -2%;
-      right: -6%;
+  @media screen and (max-width:900px) {
+    .new{
+      font-size: 25px;
     }
-    .banner-desc {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    h1 {
-      font-size: 50px;
-    }
-    h3 {
+    .name{
       font-size: 40px;
     }
-    button {
-      margin-top: 90px;
-      z-index: 10000;
-    }
-    .desc {
-      bottom: 60px;
-    }
-    .product-detail-container {
-      flex-wrap: wrap;
-    }
-    .product-detail-container .product-detail-image {
-      width: 350px;
-      height: 350px;
+    .shopnow{
+      font-weight: bold;
+      font-size: 20px;
+      background-color: tomato;
+      padding: 10px 5px;
+      text-transform: uppercase;
+      border-radius: 7px;
+      color: white;
+      width: 70%;
+      margin-top: 10px;
     }
   }
+  @media screen and (max-width:500px) {
+    justify-content: space-between;
+    .top{
+      margin-top: 2rem;
+    }
+    .new{
+      font-size: 20px;
+    }
+    .name{
+      font-size: 30px;
+    }
+    .shopnow{
+      font-size: 14px;
+      padding: 10px 5px;
+      width: 90%;
+    }
+    .call{
+      font-size: 14px;
+    }
+    .b-left{
+  font-size: 25px;
+}
+  }
+`;
+
+const BannerCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 116%;
+  img{
+    max-height: 100%;
+    width: auto;
+    z-index: 0;
+  }
+  @media screen and (max-width:800px) {
+    img{
+      position: absolute;
+      height: 70%;
+      bottom: 10px;
+    }
+  }
+  @media screen and (max-width:500px) {
+    background-color: red;
+    img{
+      position: absolute;
+      height: 60%;
+      left: 20%;
+      bottom: 30px;
+    }
+  }
+`;
+const BannerRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+justify-content: space-between;
+
+.top{
+  background-color: tomato;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+  padding: 1rem;
+  border-radius: 50%;
+ 
+}
+.off{
+  font-weight: bold;
+}
+.social{
+  font-size:30px ;
+  padding: 2px;
+  border-radius: 50px;
+  color:hsl(244, 16%, 43%);
+  transition: all 0.5s linear;
+ 
+}
+.social:hover{
+  color: white;
+  background: #ff4a57;;
+    border: 2px solid transparent;
+}
+.bottom{
+display:flex;
+gap: 0.4rem;
+}
+
 `;
