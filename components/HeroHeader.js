@@ -129,6 +129,7 @@ const BannerLeft = styled.div`
   .call{
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
+    z-index: 10;
   }
   .number{
     font-weight: 900;
