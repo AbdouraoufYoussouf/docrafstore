@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Sentry from "react-activity/dist/Dots";
 import "react-activity/dist/Dots.css";
-import { useForm } from "react-hook-form";
 
 const ModalUser = ({ total, selectProducts, toggleModal }) => {
 
