@@ -15,8 +15,8 @@ const HeroHeader = ({ heroBanner }) => {
           <p className="new">new and modern</p>
           <h2 className="name">Headphone 15 pro</h2>
           <p className="offer">aujourd’hui derniere offre </p>
-          <Link href={`/product/${path}`} className="shopnow">
-          Voir le produit
+          <Link href={`/product/${path}`}>
+          <button className="shopnow">Voir le produit</button>
         </Link>
         </div>
         <div className="bottom">
