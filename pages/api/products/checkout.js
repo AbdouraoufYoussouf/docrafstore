@@ -6,6 +6,8 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
 
+  
+
   await connectMongo();
   if (req.method !== 'POST') {
     res.json('should a post but its not!').send();
@@ -16,7 +18,8 @@ export default async function handler(req, res) {
   const productsIds = req.body.products.split(',');
   const uniqIds = [...new Set(productsIds)];
   const products = await Product.find({ _id: { $in: uniqIds } }).exec();
-
+console.log('data',req.body)
+  
   let line_items = [];
   for (let productId of uniqIds) {
     const quantity = productsIds.filter(id => id === productId).length;
