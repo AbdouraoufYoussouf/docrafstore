@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React, { useEffect, useState } from "react"
 import CardProduct from "../components/CardProduct"
 import HeroHeader from "../components/HeroHeader"
@@ -24,45 +25,49 @@ export default function Home() {
   }
 
 
-let limit = data?.length -1
+  let limit = data?.length - 1
   const [count, setCount] = useState(0);
-console.log(count)
-const [increment, setIncrement] = useState(-1);
+  const [increment, setIncrement] = useState(-1);
 
-useEffect(() => {
-  const interval = setInterval(() => {
-    setCount((prevCount) => prevCount + increment);
-  }, 10000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + increment);
+    }, 10000);
 
-  return () => clearInterval(interval);
-}, [increment]);
+    return () => clearInterval(interval);
+  }, [increment]);
 
-useEffect(() => {
-  if (count === limit) {
-    setIncrement(-1);
-  } else if (count === 0) {
-    setIncrement(1);
-  }
-}, [count, limit]);
+  useEffect(() => {
+    if (count === limit) {
+      setIncrement(-1);
+    } else if (count === 0) {
+      setIncrement(1);
+    }
+  }, [count, limit]);
 
   return (
     <>
       <input placeholder="Search..."
         value={phrase} onChange={e => setPhrase(e.target.value)}
         className="bg-gray-100 w-full py-2 px-4 rounded-xl" />
-        { !phrase &&  <HeroHeader heroBanner={data.length && data[count]} />}
+      {!phrase && <HeroHeader heroBanner={data.length && data[count]} />}
 
       <div>
         {
-          categorieNames.map((categorie,index) => (
+          categorieNames.map((categorie, index) => (
             <div key={index}>
               {products.find(p => p.category === categorie) && (
                 <div>
-                  <h2 className="text-2xl font-bold capitalize">{categorie}</h2>
-                  <div className="flex mx-5 overflow-x-scroll snap-x scrollbar-hide" >
-
-                    {products.filter(p => p.category === categorie).map((p,i) => (
-                      <div key={i} className="p-3 snap-start" >
+                  <div className="flex justify-between items-center bg-gray-600 my-3 p-2 rounded-lg ">
+                    <h2 className="text-2xl text-white font-bold capitalize">{categorie}</h2>
+                    <Link href={`/${categorie}`}>
+                      <span className="bg-red-600 text-white font-bold p-1 rounded-lg cursor-pointer">Voir plus</span>
+                    </Link>
+                  </div>
+                  <div className="flex mx-5 overflow-x-auto whitespace-no-wrap scrol" >
+                  
+                    {products.filter(p => p.category === categorie).map((p, i) => (
+                      <div key={i} className="p-3 flex justify-center items-center " >
                         <CardProduct product={p} />
                       </div>
                     ))}

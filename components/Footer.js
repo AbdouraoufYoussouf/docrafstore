@@ -21,27 +21,27 @@ const Footer = () => {
       <>
       <Link href={"/"} className="nav-link">
         <span>
-          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
+          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
         </span>
       </Link>
-      <Link href={"/smartphone"} className="nav-link">
+      <Link href={"/mobiles"} className="nav-link">
         <span>
-          <BsPhoneFill color={path.includes("smartphone") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
+          <BsPhoneFill color={path.includes("mobiles") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
         </span>
       </Link>
       <Link href={"/pc"} className="nav-link">
         <span>
-          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
+          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
         </span>
       </Link>
-      <Link href={"/ecouteur"} className="nav-link">
+      <Link href={"/casques"} className="nav-link">
         <span>
-          <FaHeadphones color={path.includes("ecouteur") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
+          <FaHeadphones color={path.includes("casques") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
         </span>
       </Link>
       <Link href={"/ckeckout"} className="nav-link">
         <div style={{position:"relative"}}>
-          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
+          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
           {length>0  && <span className="bag">{length}</span>}
         </div>
       </Link>

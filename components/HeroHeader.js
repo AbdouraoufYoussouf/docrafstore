@@ -92,7 +92,7 @@ const BannerLeft = styled.div`
     }
     .name{
       font-weight: 900;
-      font-size: 60px;
+      font-size: 50px;
       color: tomato;
     }
     .shopnow{

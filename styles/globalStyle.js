@@ -56,9 +56,13 @@ h2{
 .shadow{
   box-shadow: "0px 0px 5px 1px rgb(69 67 96)";
 }
+.shadow-card{
+  box-shadow: rgb(43 52 69 / 40%) 0px 4px 16px;
+}
+
+
 
 .text-box {
-  
   font-size: 15px;
   display: -webkit-box; /* Afficher le texte comme un conteneur flexible */
   -webkit-line-clamp: 3; /* Définir le nombre de lignes souhaitées */
@@ -68,10 +72,33 @@ h2{
 }
 .icon{
   font-size: 25px;
+  cursor: pointer;
+  &&:hover{
+    color: blue !important;
+  }
   @media screen and (max-width:640px) {
     font-size: 20px !important;
   }
 }
+.delete {
+  font-size: 30px !important;
+}
+
+.scrol::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrol::-webkit-scrollbar-thumb {
+  border-radius: 7px;
+  background-color: tomato;
+}
+
+
+
+
+
+
   /* @media (prefers-color-scheme: dark) {
   .card,
   .footer {
