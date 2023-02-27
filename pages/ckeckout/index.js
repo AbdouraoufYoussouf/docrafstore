@@ -23,6 +23,13 @@ const CkeckoutPage = () => {
       });
     }
   }
+  function deleteProduct(id) {
+    let index = selectProducts.indexOf(id);
+    while (index !== -1) {
+      selectProducts.splice(index, 1);
+      index = selectProducts.indexOf(id);
+    }
+  }
 
   useEffect(() => {
     if (selectProducts?.length > 0) {
@@ -49,11 +56,11 @@ const CkeckoutPage = () => {
   };
   return (
     <>
-      {productInfo.length < 0 &&
+      {selectProducts.length === 0 &&
         <div className="h-60 w-100 bg-gray-500 rounded-lg gap-2 flex flex-col justify-center items-center text-white" >
           <img className="h-20" src="/logo1.png" />
           <p className="text-xl">Votre panier est vide!</p>
-          <p className="font-mono">Veillez parcourir nos categorie pour voir nos differents offres!</p>
+          <p className="font-mono">Veillez parcourir nos catégories pour voir nos différents offres</p>
           <Link href={`/`}>
             <button className="bg-red-400 p-2 px-3 rounded-lg hover:bg-gray-700 font-bold">Commencer vos achats</button>
           </Link>
@@ -78,7 +85,7 @@ const CkeckoutPage = () => {
                       {product.description}
                     </p>
                     <RiDeleteBin5Line
-                      onClick={() => moinsProduct(product._id)}
+                      onClick={() => deleteProduct(product._id)}
                       className="icon mt-4 max-sm:hidden"
                       color="red"
                     />
@@ -102,7 +109,7 @@ const CkeckoutPage = () => {
                       />
                     </div>
                     <RiDeleteBin5Line
-                      onClick={() => moinsProduct(product._id)}
+                      onClick={() => deleteProduct(product._id)}
                       className="icon sm:hidden"
                       color="red"
                     />
