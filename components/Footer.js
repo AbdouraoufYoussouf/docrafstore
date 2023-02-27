@@ -21,27 +21,27 @@ const Footer = () => {
       <>
       <Link href={"/"} className="nav-link">
         <span>
-          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :""} size={30} />
+          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
         </span>
       </Link>
       <Link href={"/smartphone"} className="nav-link">
         <span>
-          <BsPhoneFill color={path.includes("smartphone") ? "hsl(43, 100%, 68%)" :""} size={30} />
+          <BsPhoneFill color={path.includes("smartphone") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
         </span>
       </Link>
       <Link href={"/pc"} className="nav-link">
         <span>
-          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :""} size={30} />
+          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
         </span>
       </Link>
       <Link href={"/ecouteur"} className="nav-link">
         <span>
-          <FaHeadphones color={path.includes("ecouteur") ? "hsl(43, 100%, 68%)" :""} size={30} />
+          <FaHeadphones color={path.includes("ecouteur") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
         </span>
       </Link>
       <Link href={"/ckeckout"} className="nav-link">
         <div style={{position:"relative"}}>
-          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :""} size={30} />
+          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} />
           {length>0  && <span className="bag">{length}</span>}
         </div>
       </Link>
@@ -61,8 +61,8 @@ const Foter = styled.footer`
   bottom: 0px;
   padding: 0.5rem;
   width: 100%;
-  border-top: 1px solid;
-  background-color: white;
+  background-color: hsl(258, 60%, 98%);
+  border-top: 1px solid #00bcd4;
 
   .bag {
     position: absolute;

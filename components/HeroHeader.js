@@ -152,7 +152,6 @@ const BannerLeft = styled.div`
       border-radius: 7px;
       color: white;
       width: 70%;
-      margin-top: 10px;
     }
   }
   @media screen and (max-width:500px) {

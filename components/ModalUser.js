@@ -84,7 +84,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                 <span style={{ display: "none" }}> Modal</span>
                 <div className="modal-header">
                     <h2>Confirmé la commande</h2>
-                    <button style={{ color: "tomato" }} onClick={toggleModal}>
+                    <button className="bg-red-500 rounded-lg p-1 text-white" onClick={toggleModal}>
                         Close X
                     </button>
                 </div>
@@ -165,8 +165,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                         {!loding ? (<button type="submit" disabled={!isFormValid}
                          className={
                             !isFormValid
-                                ? " px-5 py-2 mt-4 rounded-xl shadow-emerald-300 shadow-lg text-white w-full font-bold bg-gray-300 "
-                                : "bg-emerald-500 px-5 py-2 mt-4 rounded-xl shadow-emerald-300 shadow-lg text-white w-full font-bold"
+                                ? " px-5 py-2 mt-4 rounded-xl shadow-emerald-100 shadow-lg text-white w-full font-bold bg-gray-300 "
+                                : "bg-emerald-500 px-5 py-2 mt-4 rounded-xl shadow-emerald-100 shadow-lg text-white w-full font-bold"
                         }
                                 > Payé {total} Dhs</button>
                         ) : (
@@ -222,5 +222,10 @@ const Modal = styled.div`
 
   .modal-content {
     margin-top: 20px;
+  }
+  @media screen and (max-width:900px) {
+    .modal{
+        width: 98%;
+    }
   }
 `;
