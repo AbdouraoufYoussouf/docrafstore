@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm upgrade --latest && next build",
     "start": "next start",
     "lint": "next lint",
     "host": "0.0.0.0"
