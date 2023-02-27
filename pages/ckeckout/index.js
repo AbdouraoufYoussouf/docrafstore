@@ -24,12 +24,10 @@ const CkeckoutPage = () => {
     }
   }
   function deleteProduct(id) {
-    let index = selectProducts.indexOf(id);
-    while (index !== -1) {
-      selectProducts.splice(index, 1);
-      index = selectProducts.indexOf(id);
-    }
+    const newArray = selectProducts.filter((item) => item !== id);
+    setSelectProducts(newArray)
   }
+ 
 
   useEffect(() => {
     if (selectProducts?.length > 0) {
