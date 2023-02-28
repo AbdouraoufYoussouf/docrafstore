@@ -7,13 +7,13 @@ const CardProduct = ({ product }) => {
   const { selectProducts, addProductCart } = useContext(ProductContext);
 
   const name = product?.name;
-  const path = name.split(" ").join("_");
+  const path = name?.split(" ").join("_");
 
   return (
-    <div className="w-60 h-full hover:bg-violet-600 hover:text-white p-2 rounded-lg flex flex-col justify-between shadow-card max-sm:w-52">
+    <div className=" w-60 h-full hover:bg-violet-600 hover:text-white p-2 rounded-lg flex flex-col  justify-between shadow-card max-sm:w-52">
       <div className="bg-blue-100 p-2 rounded-lg flex justify-center">
         <Link className="card " href={`/product/${path}`}>
-          <img src={product?.picture} className="w-32 cursor-pointer" alt={product?.name} />
+          <img src={product?.images[0]} className="w-32 cursor-pointer" alt={product?.name} />
         </Link>
       </div>
       <div className="mt-2">

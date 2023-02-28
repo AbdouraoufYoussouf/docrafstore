@@ -77,7 +77,7 @@ const CkeckoutPage = () => {
                 <div key={product._id} className="flex p-4 rounded-lg shadow relative">
                   <div className="bg-gray-100 p-3 flex rounded-xl shrink-0">
                     <Link className="" href={`/product/${path}`}>
-                      <img className=" cursor-pointerw-32 self-center max-lg:w-28 max-sm:w-20" src={product.picture} alt={product.name} />
+                      <img className="w-28 cursor-pointerw-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
                     </Link>
                   </div>
 
@@ -137,22 +137,22 @@ const CkeckoutPage = () => {
                 </div>
                 <div className="flex my-3">
                   <p className="grow font-bold text-gray-500">Prix Total</p>
-                  <p className="font-bold">{achatTotal} Dhs</p>
+                  <p className="font-bold">{achatTotal} €</p>
                 </div>
                 <div className="flex my-3">
                   <p className="grow font-bold text-sm text-gray-500">Livraison</p>
-                  <p className="font-bold text-sm">{livraison} Dhs</p>
+                  <p className="font-bold text-sm">{livraison} €</p>
                 </div>
                 <div className="flex my-3 border-t pt-3 border-dashed border-emerald-500">
                   <p className="grow font-bold text-gray-500">Somme Total</p>
-                  <p className="font-bold">{total} Dhs</p>
+                  <p className="font-bold">{total} €</p>
                 </div>
               </div>
               <button
                 onClick={() => setShow(!show)}
                 className="bg-emerald-500 px-5 py-2 rounded-xl shadow-emerald-300 shadow-lg text-white w-full font-bold"
               >
-                Payé {total} Dhs
+                Payé {total} €
               </button>
             </div>
           </div>

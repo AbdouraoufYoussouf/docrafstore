@@ -60,6 +60,7 @@ const Foter = styled.footer`
   position: fixed;
   bottom: 0px;
   padding: 0.5rem;
+  margin-top: 1rem;
   width: 100%;
   background-color: hsl(258, 60%, 98%);
   border-top: 1px solid #00bcd4;

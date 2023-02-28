@@ -5,6 +5,7 @@ import HeroHeader from "../components/HeroHeader"
 import Layout from "../components/Layout"
 import connectMongo from "../lib/connectMongo"
 import Product from "../models/Products"
+import {GrLinkNext} from "react-icons/gr"
 
 export default function Home() {
   const [data, setData] = useState([])
@@ -52,7 +53,7 @@ export default function Home() {
         className="bg-gray-100 w-full py-2 px-4 rounded-xl" />
       {!phrase && <HeroHeader heroBanner={data.length && data[count]} />}
 
-      <div>
+      <div className="mb-8">
         {
           categorieNames.map((categorie, index) => (
             <div key={index}>
@@ -61,10 +62,12 @@ export default function Home() {
                   <div className="flex justify-between items-center bg-gray-600 my-3 p-2 rounded-lg ">
                     <h2 className="text-2xl text-white font-bold capitalize">{categorie}</h2>
                     <Link href={`/${categorie}`}>
-                      <span className="bg-red-600 text-white font-bold p-1 rounded-lg cursor-pointer">Voir plus</span>
+                      <span className="flex items-center gap-2 bg-red-500 text-white font-bold p-1 px-2 rounded-lg cursor-pointer">Voir plus
+                      <GrLinkNext color='red' />
+                      </span>
                     </Link>
                   </div>
-                  <div className="flex mx-5 overflow-x-auto whitespace-no-wrap scrol" >
+                  <div className="flex overflow-x-auto whitespace-no-wrap scrol" >
                   
                     {products.filter(p => p.category === categorie).map((p, i) => (
                       <div key={i} className="p-3 flex justify-center items-center " >

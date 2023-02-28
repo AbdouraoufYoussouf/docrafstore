@@ -15,8 +15,8 @@ const HeroHeader = ({ heroBanner }) => {
           <p className="new">new and modern</p>
           <h2 className="name">{name}</h2>
           <p className="offer">aujourd’hui derniere offre </p>
-          <Link href={`/product/${path}`}>
-          <button className="shopnow">Voir le produit</button>
+          <Link href={`/product/${path}`} className=" ">
+          <span className="shopnow">Voir le produit</span>
         </Link>
         </div>
         <div className="bottom">
@@ -28,7 +28,7 @@ const HeroHeader = ({ heroBanner }) => {
         </div>
       </BannerLeft>
       <BannerCenter>
-        <img src={heroBanner?.picture} />
+        {/* <img src={heroBanner?.images[0]} /> */}
       </BannerCenter>
       <BannerRight>
         <div className="top">
@@ -58,14 +58,8 @@ const BannerContainer = styled.div`
   height: 400px;
   line-height: 0.9;
   width: 100%;
-  background-image: linear-gradient(
-    to right top,
-    #b3bdcd,
-    #8bc5db,
-    #5ecfcb,
-    #6cd29b,
-    #a8cb5d
-  );
+  color: white;
+  background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
   @media screen and (max-width:800px) {
     padding:10px;
   }
@@ -77,18 +71,21 @@ const BannerLeft = styled.div`
   justify-content: center;
   gap: 3rem;
     color: hsl(244, 16%, 43%);
-
   .top{
     font-style: italic;
       text-transform: uppercase;
       display: flex;
       flex-direction: column;
-      gap: .4rem;
+      justify-content: center;
+      align-items: flex-start;
+      gap: .5rem;
       font-family: Andale Mono, monospace;
+      color: white;
     }
     .new{
       font-weight: bold;
       font-size: 25px;
+      color: white;
     }
     .name{
       font-weight: 900;
@@ -103,7 +100,6 @@ const BannerLeft = styled.div`
       text-transform: uppercase;
       border-radius: 7px;
       color: white;
-      width: 50%;
       z-index: 10;
     }
 
@@ -113,6 +109,7 @@ const BannerLeft = styled.div`
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
+  color: white;
 }
 .b-left{
   align-self: center;
@@ -228,19 +225,7 @@ justify-content: space-between;
 .off{
   font-weight: bold;
 }
-.social{
-  font-size:30px ;
-  padding: 2px;
-  border-radius: 50px;
-  color:hsl(244, 16%, 43%);
-  transition: all 0.5s linear;
- 
-}
-.social:hover{
-  color: white;
-  background: #ff4a57;;
-    border: 2px solid transparent;
-}
+
 .bottom{
 display:flex;
 gap: 0.4rem;
