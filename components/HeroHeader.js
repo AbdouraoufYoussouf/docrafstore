@@ -8,7 +8,7 @@ const HeroHeader = ({ heroBanner }) => {
   let name = heroBanner?.name
   const path = name?.split(" ").join("_");
   return (
-    <BannerContainer>
+    <div className="w-full flex justify-between items-start my-2 rounded-lg relative heroheader max-lg:p-3 max-xm:p-2">
       <BannerLeft>
         <div className="top">
 
@@ -28,7 +28,7 @@ const HeroHeader = ({ heroBanner }) => {
         </div>
       </BannerLeft>
       <BannerCenter>
-        {/* <img src={heroBanner?.images[0]} /> */}
+       <img src={"/products/headset.png"} />
       </BannerCenter>
       <BannerRight>
         <div className="top">
@@ -41,34 +41,18 @@ const HeroHeader = ({ heroBanner }) => {
           <FaTiktok className="social" />
         </div>
       </BannerRight>
-    </BannerContainer>
+    </div>
   );
 };
 
 export default HeroHeader;
 
-const BannerContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
-  padding: 30px 40px;
-  background-color: #dcdcdc;
-  border-radius: 15px;
-  position: relative;
-  height: 400px;
-  line-height: 0.9;
-  width: 100%;
-  color: white;
-  background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
-  @media screen and (max-width:800px) {
-    padding:10px;
-  }
-`;
 const BannerLeft = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   gap: 3rem;
     color: hsl(244, 16%, 43%);
   .top{
@@ -89,7 +73,7 @@ const BannerLeft = styled.div`
     }
     .name{
       font-weight: 900;
-      font-size: 50px;
+      font-size: 40px;
       color: tomato;
     }
     .shopnow{
@@ -102,7 +86,6 @@ const BannerLeft = styled.div`
       color: white;
       z-index: 10;
     }
-
     //bottom
 .bottom{
   display: flex;
@@ -138,23 +121,18 @@ const BannerLeft = styled.div`
       font-size: 25px;
     }
     .name{
-      font-size: 40px;
+      font-size: 30px;
     }
     .shopnow{
       font-weight: bold;
-      font-size: 20px;
-      background-color: tomato;
-      padding: 10px 5px;
-      text-transform: uppercase;
-      border-radius: 7px;
-      color: white;
-      width: 70%;
+      font-size: 18px;   
     }
   }
   @media screen and (max-width:500px) {
     justify-content: space-between;
     .top{
       margin-top: 2rem;
+      gap: 14px;
     }
     .new{
       font-size: 20px;
@@ -163,9 +141,8 @@ const BannerLeft = styled.div`
       font-size: 25px;
     }
     .shopnow{
-      font-size: 14px;
-      padding: 10px 5px;
-      width: 80%;
+      font-size: 16px;
+      padding: 7px ;
     }
     .call{
       font-size: 14px;
@@ -193,6 +170,7 @@ const BannerCenter = styled.div`
       position: absolute;
       height: 70%;
       bottom: 10px;
+      right: 50px;
     }
   }
   @media screen and (max-width:500px) {
@@ -200,18 +178,18 @@ const BannerCenter = styled.div`
     img{
       position: absolute;
       height: 50%;
-      left: 30%;
-      bottom: 40px;
+      right: 10px;
+      bottom: 60px;
     }
   }
 `;
 
 const BannerRight = styled.div`
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
 justify-content: space-between;
-
 .top{
   background-color: tomato;
   color: white;
@@ -225,10 +203,8 @@ justify-content: space-between;
 .off{
   font-weight: bold;
 }
-
 .bottom{
 display:flex;
 gap: 0.4rem;
 }
-
 `;

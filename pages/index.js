@@ -20,7 +20,7 @@ export default function Home() {
   const [phrase, setPhrase] = useState('')
   let products;
   if (phrase) {
-    products = data.filter(p => p.name.toLowerCase().includes(phrase))
+    products = data.filter(p => p.name.toLowerCase().includes(phrase.toLowerCase()))
   } else {
     products = data;
   }
@@ -50,10 +50,10 @@ export default function Home() {
     <>
       <input placeholder="Search..."
         value={phrase} onChange={e => setPhrase(e.target.value)}
-        className="bg-gray-100 w-full py-2 px-4 rounded-xl" />
+        className="bg-gray-100 w-full py-2 px-4 rounded-xl border border-t-cyan-400" />
       {!phrase && <HeroHeader heroBanner={data.length && data[count]} />}
 
-      <div className="mb-8">
+      <div className="mb-2">
         {
           categorieNames.map((categorie, index) => (
             <div key={index}>
@@ -63,7 +63,7 @@ export default function Home() {
                     <h2 className="text-2xl text-white font-bold capitalize">{categorie}</h2>
                     <Link href={`/${categorie}`}>
                       <span className="flex items-center gap-2 bg-red-500 text-white font-bold p-1 px-2 rounded-lg cursor-pointer">Voir plus
-                      <GrLinkNext color='red' />
+                      <GrLinkNext className="text-white-important"/>
                       </span>
                     </Link>
                   </div>

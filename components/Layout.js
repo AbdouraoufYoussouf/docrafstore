@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import React, { useContext, useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { GlobalStyle } from '../styles/globalStyle'
 import Footer from './Footer'
 import { ProductContext } from './ProductContext'
 
@@ -26,8 +24,7 @@ const Layout = ({children}) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo1.png" />
       </Head>
-      <GlobalStyle/>
-        <div className='ms:p-4 p-2 mb-7'>
+        <div className='mb-12 p-2 '>
           {success && (
           <div className='mb-5 bg-green-400 text-white text-lg p-5 rounded-xl'>
             Votre commande a bien éffectué avec successé , AnsumatiBoutique vous remercie!!

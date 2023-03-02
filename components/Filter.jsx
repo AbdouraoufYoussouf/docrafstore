@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { BsFilterSquare } from 'react-icons/bs'
+import { RiMoneyPoundCircleLine } from 'react-icons/ri'
 
-const prixData=[
-  "Moins de 10€",
-  "10€ à 50€",
-  "50€ à 100€",
-  "100€ à 500€",
-  "500€ à 1000€",
-  "1000€ à 2000€",
-  "Plus 2000€",
-]
-const Filter = ({ data, setData }) => {
-  // Marques
-  const marquesData = new Set();
-  data
-    ?.filter((p) => p.category === "casques")
-    .map((item, index) => {
-      marquesData.add(item.marque);
-    });
-  const marques = [];
-  marquesData?.forEach((m) => marques.push(m));
-  // setData
+const prixData = [
+  { min: 0, max: 10, label: "Moins de 10€" },
+  { min: 10, max: 50, label: "10€ à 50€" },
+  { min: 50, max: 100, label: "50€ à 100€" },
+  { min: 100, max: 500, label: "100€ à 500€" },
+  { min: 500, max: 1000, label: "500€ à 1000€" },
+  { min: 1000, max: 2000, label: "1000€ à 2000€" },
+  { min: 2000, max: 100000000, label: "Plus 2000€" }
+];
+const Filter = ({ data, setData,category}) => {
+  const [showfiltrer, setShowfiltrer] = useState(true)
+
+  var [priceFiltered, setPriceFiltered] = useState([]);
+  const [isPrice, setIsPrice] = useState(false)
+  // setDataMarque
   var [marqFiltered, setMarqFiltered] = useState([]);
   const [isMarque, setIsMarque] = useState(false);
+
+  const marques = Array.from(new Set(
+    data.filter(product => product.category === category)
+      .map(product => product.marque)
+  ));
+
   // Fonction qui gere les marques cochés ou decochés
   var handleMarque = (e) => {
     let isChecked = e.target.checked;
@@ -38,111 +41,118 @@ const Filter = ({ data, setData }) => {
       setMarqFiltered(temps);
     }
   };
+
+  // fonction qui gere les prix cochés
+  const handlePriceChange = (e) => {
+    let isChecked = e.target.checked;
+    let price = e.target.value;
+    let id = e.target.id;
+    setIsPrice(!isPrice);
+    let temp = prixData[id];
+    if (isChecked === true) {
+      priceFiltered.push(temp);
+    }
+    if (isChecked === false) {
+      var temps = priceFiltered?.filter((p) => p.label !== price);
+      setPriceFiltered(temps);
+    }
+  };
   // Fonction qui va filitrer automatiquement dans useEffect+
   // la data selon les marques selectionnés
-  const handleFilterMarque = (itemSearch) => {
-    let dataFiltered = new Array();
-    marqFiltered?.map((mrq) => {
-      let temp = data.filter((p) =>
-        p.marque.toLowerCase().includes(mrq.marque.toLowerCase())
-      );
-      temp?.map((item) => dataFiltered.push(item));
-    });
-    return dataFiltered;
-  };
+  function filterProducts(products, marqueFilters, priceFilters) {
+    let filtered = [...products];
+  
+    if (marqueFilters.length > 0) {
+      filtered = filtered.filter(product => {
+        for (const filter of marqueFilters) {
+          if (product.marque.toLowerCase().includes(filter.marque.toLowerCase())) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+  
+    if (priceFilters.length > 0) {
+      filtered = filtered.filter(product => {
+        for (const filter of priceFilters) {
+          if (product.price >= filter.min && product.price < filter.max) {
+            return true;
+          }
+        }
+        return false;
+      });
+    }
+  
+    return filtered;
+  }
 
   useEffect(() => {
-    if (marqFiltered.length !== 0) {
-      let dataFiltered = handleFilterMarque();
-      setData(dataFiltered);
-    } else {
-      setData(data);
-    }
-  }, [isMarque]);
+    const filtered = filterProducts(data, marqFiltered, priceFiltered);
+    setData(filtered);
+  }, [isMarque, isPrice]);
+  
+
   return (
-    <FIlter>
-      <h2 className="filter">Filter</h2>
-      <h3 className="title">Marque</h3>
-      <Marque>
-        {marques.map(
-          (marq, index) =>
-            marq !== "" && (
-              <div key={index} className="marq">
-                <input
-                  onChange={(e) => handleMarque(e)}
-                  type="checkbox"
-                  id={index}
-                  name={marq}
-                  value={marq}
-                  className="input"
-                />
-                <h5 className="name">{marq}</h5>
-              </div>
-            )
-        )}
-      </Marque>
-      <Prix>
-        <h3 className="title">Prix</h3>
-        {
-          prixData?.map((p,i)=>(
-             <div key={i} className="marq">
-          <input
-            onChange={(e) => handleMarque(e)}
-            type="checkbox"
-            id={1}
-            className="input"
-          />
-          <h5 className="nam">{p}</h5>
+
+    <div className="w-[210px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0 max-md:relative max-md:w-full "  >
+      <div className="flex  cursor-pointer justify-between hover:bg-gray-200 hover:rounded-lg p-1 " onClick={() => setShowfiltrer(!showfiltrer)}>
+
+        <BsFilterSquare className="hover:text-red-600" size={30} />
+        <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
+      </div>
+      {
+        showfiltrer &&
+        <div className="flex flex-col max-md:flex-row p-1 gap-3 bg-gray-100 rounded-lg">
+
+          <div className=" flex flex-col  basis-1">
+            <h3 className="text-left font-bold text-lg">Marque</h3>
+            <div className="flex flex-col max-md:flex-row max-md:flex-wrap max-md:justify-cennter max-md:items-start max-xs:gap-1 max-md:max-h-32  overflow-y-auto">
+              {marques.map(
+                (marq, index) =>
+                  marq !== "" && (
+                    <div key={index} className="flex items-center gap-2 max-md:gap-0.5 max-md:min-w-[4.5rem] mr-4">
+                      <input
+                        onChange={(e) => handleMarque(e)}
+                        type="checkbox"
+                        id={index}
+                        name={marq}
+                        value={marq}
+                      />
+                      <h5 className="capitalize text-xm font-tury text-gray-500">{marq}</h5>
+                    </div>
+                  )
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col flex-1">
+
+            <h3 className="text-left font-bold text-lg">Prix</h3>
+            <div className=" grid sm:grid-cols-2 xx:grid-cols-3  md:grid-cols-1 max-xs:gap-1 max-md:max-h-32 overflow-y-auto">
+              {prixData.map((range, index) => (
+                <div key={range.label} className="flex gap-2 items-center  ">
+                  <input
+                    type="checkbox"
+                    id={index}
+                    value={range.label}
+                    onChange={handlePriceChange}
+                  />
+                  <h5 className="italic font-mono font-bold">{range.label}</h5>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-          ))
-        }
-       
-      </Prix>
-    </FIlter>
+      }
+
+
+    </div>
+
   );
 };
 
 export default Filter;
 
-const FIlter = styled.div`
-  width: 250px;
-  min-height: 80vh;
-  border-radius: 7px;
-  color: hsl(244, 16%, 43%);
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-  position: sticky;
-  top: 0;
-
-  .filter {
-    text-align: center;
-    font-size: 22px;
-  }
-  .title {
-    text-align: left;
-    font-size: 20px;
-  }
-  .marq {
-    display: flex;
-    gap: 20px;
-  }
-  .name {
-    font-size: 17px;
-    text-transform: capitalize;
-    font-style: italic;
-    color: gray;
-  }
-`;
-const Marque = styled.div`
-  max-height: 250px;
-  overflow: scroll;
-  overflow: auto;
-`;
 
 const Prix = styled.div`
   overflow: scroll;

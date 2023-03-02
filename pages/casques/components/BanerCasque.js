@@ -20,7 +20,7 @@ const BanerCasque = () => {
           <div className="flex items-center gap-5 max-md:gap-2 max-lg:absolute max-lg:bottom-5 max-sm:bottom-0">
             <FaBlenderPhone className="text-3xl " color='tomato' />
             <div className="flex flex-col items-start">
-              <p className="italic capitalize text-sm w-full text-gray-700 ">Appel pour livraison</p>
+              <p className="italic capitalize text-sm w-full text-gray-700 z-10">Appel pour livraison</p>
               <p className="font-bold font-conso text-2xl text-gray-700 max-lg:text-lg">0633851644</p>
             </div>
           </div>
@@ -28,7 +28,7 @@ const BanerCasque = () => {
         <div className="flex">
 
         <img src="/products/airpods.png" className=" p-3 absolute left-60 top-20 max-lg:hidden h-v3" />
-        <img src="/products/headset.png" className=" p-3 left-20 flex-1 h-v4" />
+        <img src="/products/headset.png" className=" p-3 flex-1 h-v4" />
         </div>
       </div>
 
@@ -42,7 +42,7 @@ const BanerCasque = () => {
             Today's Super offre
           </p>
         </div>
-        <button className="p-2 bg-rose-600 font-bold uppercase text-white rounded-lg">
+        <button className="p-2 bg-rose-600 font-bold uppercase text-white rounded-lg z-10">
           Order Now
         </button>
         <div className="flex gap-2 justify-center self-center max-md:self-end">

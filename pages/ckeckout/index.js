@@ -77,7 +77,7 @@ const CkeckoutPage = () => {
                 <div key={product._id} className="flex p-4 rounded-lg shadow relative">
                   <div className="bg-gray-100 p-3 flex rounded-xl shrink-0">
                     <Link className="" href={`/product/${path}`}>
-                      <img className="w-28 cursor-pointerw-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
+                      <img className="w-28 cursor-pointer w-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
                     </Link>
                   </div>
 
@@ -95,7 +95,7 @@ const CkeckoutPage = () => {
                     </div>
 
                     <div className="flex flex-col justify-between ml-2  max-sm:flex-row max-sm:mt-4 items-center ">
-                      <h2 className="grow text-center font-bold text-lg">{product.price}Dh</h2>
+                      <h2 className="grow text-center font-bold text-lg">{product.price}€</h2>
                       <div className="quantity-desc m-2">
                         <FaMinusSquare
                           onClick={() => moinsProduct(product._id)}

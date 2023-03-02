@@ -17,70 +17,36 @@ const Footer = () => {
  
 
   return (
-    <Foter >
-      <>
-      <Link href={"/"} className="nav-link">
+    <div className="flex justify-center items-center gap-2 fixed bottom-0 p-1 bg-gray-300 w-full border-2 border-t-cyan-400 ">
+      <Link href={"/"} >
         <span>
-          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
+          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
-      <Link href={"/mobiles"} className="nav-link">
+      <Link href={"/mobiles"} >
         <span>
-          <BsPhoneFill color={path.includes("mobiles") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
+          <BsPhoneFill color={path.includes("mobiles") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
-      <Link href={"/pc"} className="nav-link">
+      <Link href={"/pc"} >
         <span>
-          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
+          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
-      <Link href={"/casques"} className="nav-link">
+      <Link href={"/casques"} >
         <span>
-          <FaHeadphones color={path.includes("casques") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
+          <FaHeadphones color={path.includes("casques") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
-      <Link href={"/ckeckout"} className="nav-link">
+      <Link href={"/ckeckout"} >
         <div style={{position:"relative"}}>
-          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"} size={30} className='icon' />
-          {length>0  && <span className="bag">{length}</span>}
+          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          {length>0  && <span className="absolute bottom-7 left-7 bg-red-500 text-white font-bold p-0.5 w-6 h-6 rounded-full flex justify-center items-center ">{length}</span>}
         </div>
       </Link>
-      </>
-    </Foter>
+    </div>
   );
 };
 
 export default Footer;
 
-const Foter = styled.footer`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  position: fixed;
-  bottom: 0px;
-  padding: 0.5rem;
-  margin-top: 1rem;
-  width: 100%;
-  background-color: hsl(258, 60%, 98%);
-  border-top: 1px solid #00bcd4;
-
-  .bag {
-    position: absolute;
-    top: -7px;
-    right: -15px;
-    color: white;
-    font-weight: bold;
-    background-color: tomato;
-    padding: 3px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: absolute;
-  line-height: 20px;
-  }
-`;

@@ -11,14 +11,14 @@ const Casque = () => {
       .then(res => res.json())
       .then(json => {setData(json), setDataInit(json)})
   }, [])
-  console.log('first', data)
+  //console.log('first', data)
   return (
-    <div className='flex flex-col justify-center  w-full '>
-      <BanerCasque />
-      <div className='flex gap-4 justify-between mt-5 items-start w-full '>
-          <Filter data={dataInit} setData={setData} />
+    <div className='flex flex-col justify-center gap-4 mb-4 w-full '>
+       <BanerCasque />
+      <div className='flex gap-4 justify-between items-start w-full max-md:flex-col '>
+          <Filter data={dataInit} setData={setData} category={"casques"} />
         
-        <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-4 justify-center  '>
+        <div className='w-full grid grid-cols-1 ss:grid-cols-2 xm:grid-cols-3 md:grid-cols-3  lg:grid-cols-3 xg:grid-cols-4 xl:grid-cols-5  gap-4 justify-center  '>
           {
             data?.filter(p => p.category === 'casques').map((product,index)=>(
               <CategorieProduct key={index} product={product}/>

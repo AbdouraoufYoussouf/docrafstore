@@ -10,30 +10,30 @@ const CardProduct = ({ product }) => {
   const path = name?.split(" ").join("_");
 
   return (
-    <div className=" w-60 h-full hover:bg-violet-600 hover:text-white p-2 rounded-lg flex flex-col  justify-between shadow-card max-sm:w-52">
-      <div className="bg-blue-100 p-2 rounded-lg flex justify-center">
-        <Link className="card " href={`/product/${path}`}>
-          <img src={product?.images[0]} className="w-32 cursor-pointer" alt={product?.name} />
-        </Link>
-      </div>
-      <div className="mt-2">
-        <h3 className="font-bold text-lg"></h3>
-        <h3 className="font-bold text-lg">{product?.name}</h3>
-      </div>
-      <p
-        className="text-sm mt-2 leading-4 text-box font-italic"
-      >
-        {" "}
-        {product?.description}
-      </p>
-      <div className="flex mt-2">
-        <div className="text-2xl font-bold grow">{product?.price}€</div>
-        <button onClick={() => addProductCart(product._id)}>
-          {" "}
-          <FaPlusSquare className="text-red-500 icon" size={30} />
-        </button>
-      </div>
+    <div className=" bg-gray-100 w-60 h-full text-gray-800 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col justify-between shadow-card max-lg:w-52">
+    <div className="h-32 bg-white m-2 rounded-lg flex justify-center">
+      <Link className="card " href={`/product/${path}`}>
+        <img src={product?.images[0]} className="w-32 cursor-pointer" alt={product?.name} />
+      </Link>
     </div>
+    <div className="mx-2">
+      <h3 className="font-bold  text-lg leading-6 max-md:leading-5 max-sm:leading-4 max-md:mb-1 max-md:text-box ">{product?.name}</h3>
+    </div>
+    <p
+      className="text-xm mx-2 mt-1 leading-5 text-box max-xm:text-[15px] max-md:leading-none "
+    >
+      {" "}
+      {product?.description}
+    </p>
+    <div className="flex m-2">
+      <div className="text-2xl font-bold grow">{product?.price}€</div>
+      <button onClick={() => addProductCart(product._id)}>
+        {" "}
+        <FaPlusSquare className="text-red-500 icon" size={30} />
+      </button>
+    </div>
+  </div>
+    
   );
 };
 
