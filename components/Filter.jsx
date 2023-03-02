@@ -14,6 +14,7 @@ const prixData = [
 ];
 const Filter = ({ data, setData,category}) => {
   const [showfiltrer, setShowfiltrer] = useState(true)
+  const [isShowfiltrer, setIsShowfiltrer] = useState(false)
 
   var [priceFiltered, setPriceFiltered] = useState([]);
   const [isPrice, setIsPrice] = useState(false)
@@ -58,7 +59,7 @@ const Filter = ({ data, setData,category}) => {
     }
   };
   // Fonction qui va filitrer automatiquement dans useEffect+
-  // la data selon les marques selectionnés
+  // la data selon les marques selectionnés et  prix selection
   function filterProducts(products, marqueFilters, priceFilters) {
     let filtered = [...products];
   
@@ -92,11 +93,31 @@ const Filter = ({ data, setData,category}) => {
     setData(filtered);
   }, [isMarque, isPrice]);
   
+  // hide filter
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width > 768) {
+        setShowfiltrer(true);
+        setIsShowfiltrer(true)
+      } else {
+        setShowfiltrer(false);
+        setIsShowfiltrer(false)
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
 
-    <div className="w-[210px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0 max-md:relative max-md:w-full "  >
-      <div className="flex  cursor-pointer justify-between hover:bg-gray-200 hover:rounded-lg p-1 " onClick={() => setShowfiltrer(!showfiltrer)}>
+    <div className="w-[210px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0  max-md:w-full "  >
+      <div className="flex  cursor-pointer justify-between hover:bg-gray-200 hover:rounded-lg p-1 " onClick={() => !isShowfiltrer && setShowfiltrer(!showfiltrer)}>
 
         <BsFilterSquare className="hover:text-red-600" size={30} />
         <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
