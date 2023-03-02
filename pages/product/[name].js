@@ -4,9 +4,8 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import connectMongo from '../../lib/connectMongo';
 import Product from '../../models/Products'
 
-import { DetailContainer, DetailImage ,ProductDescription, Recomandation} from '../../styles/DetailStyle';
-import CardProduct from '../../components/CardProduct';
 import { ProductContext } from '../../components/ProductContext';
+import CategorieProduct from '../../components/CategorieProduct';
 
 const ProductDetails = ({ products }) => {
   const router = useRouter()
@@ -14,66 +13,87 @@ const ProductDetails = ({ products }) => {
   const name = path.split("_").join(" ");
   //console.log(name)
   const product = products.find(p => p.name === name)
-
+  const { images, description, price } = product
   const [index, setIndex] = useState(0);
   //console.log("product:", product)
 
   const { addProductCart } = useContext(ProductContext);
 
- 
+
   function buyNow(id) {
     addProductCart(id)
     router.push('/ckeckout');
   }
+  useEffect(()=>{
+    if(index>0){
+      setIndex(0)
+      console.log('index',index)
+    }
+  },[name])
 
   return (
-    <div>
-      <DetailContainer>
-        <DetailImage>
-          <div>
-            <img src={product?.picture} className={'productDetailImage'} />
+    <>
+      <div className='flex p-4 gap-4 max-lg:flex-col max-sm:p-1' >
+        <div className=' w-[40%] max-lg:h-[350px]  max-lg:w-auto max-h-[500px] border flex flex-col justify-between bg-white rounded-lg '>
+          <div className='flex justify-center p-2 max-h-[80%]  transition duration-300 ease-in-out gap-4 rounded-tl-lg rounded-tr-lg hover:bg-red-400'>
+            <img src={images[index]} className="w-auto h-full" />
           </div>
-          <div className={'smallImagesContainer'}>
-            <img
-              src={product?.picture}
-              className={'smallImage'}
-              onMouseEnter={() => setIndex(1)}
-            />
+          <div className="flex justify-center gap-1 h-[20%] bg-gray-300 rounded-bl-lg rounded-br-lg overflow-auto scrol p-1">
+            {
+              images.map((img, i) => (
+                <img key={i}
+                  src={img}
+                  className={`p-1 h-full cursor-pointer bg-gray-200 hover:bg-red-400 border rounded-lg ${i===index ? 'bg-red-400' : ''}`}
+                  onMouseEnter={() => setIndex(i)}
+                />
+              ))
+            }
           </div>
-        </DetailImage>
+        </div>
 
-        <ProductDescription>
-          <h1>{name}</h1>
-          <div className="reviews">
-            <div className='starts'>
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
+        <div className='flex flex-col justify-between flex-1 gap-2'>
+          <div className='flex flex-col gap-2'>
+            <h1 className='text-2xl font-bold text-gray-700'>{name}</h1>
+            <div className="flex gap-1 items-center">
+              <div className='flex items-center'>
+                <AiFillStar className='text-red-600' />
+                <AiFillStar className='text-red-600' />
+                <AiFillStar className='text-red-600' />
+                <AiFillStar className='text-red-600' />
+                <AiOutlineStar className='text-red-600' />
+              </div>
+              <p > (20) </p>
             </div>
-            <p style={{marginBottom:12}}> (20) </p>
+            <div>
+              <h3 className='text-lg'>Details: </h3>
+              <p>{description}</p>
+            </div>
+            <div>
+              <p className="text-2xl text-red-600 font-bold">{price}€</p>
+              <span className='flex gap-3'>
+                <p className="text-lg text-red-400 line-through ">{price + price * (30 / 100)}€</p>
+                <p className="text-lg text-red-400 font-mono">-30% de réduction</p>
+              </span>
+            </div>
           </div>
-          <h4>Details: </h4>
-          <p>{product?.description}</p>
-          <p className="price">${product?.price}</p>
-        
-          <div className="buttons">
-            <button onClick={()=> addProductCart(product._id)} type="button" className="add-to-cart" >Add to Cart</button>
-            <button onClick={()=> buyNow(product._id)} type="button" className="buy-now" >Buy Now</button>
-          </div>
-        </ProductDescription>
-      </DetailContainer> 
 
-      <Recomandation >
-        <h1>Recommandation pour vous</h1>
-          <div className="product-reco">
-              {products?.map((item,index) => (
-                <CardProduct key={index} product={item} />
-              ))}
-          </div>  
-      </Recomandation>
-    </div>
+
+          <div className="flex max-sm:flex-col max-sm:gap-1 gap-6 border p-4 rounded-lg justify-center">
+            <button onClick={() => addProductCart(product._id)} type="button" className="p-2 rounded border border-red-600 text-red-600 text-lg font-semibold hover:transform hover:scale-110 transition-transform duration-500 ease-in-out" >Ajouter au panier</button>
+            <button onClick={() => buyNow(product._id)} type="button" className="p-2 rounded border bg-red-600 text-white text-lg font-semibold hover:transform hover:scale-110 transition-transform duration-500 ease-in-out " >Acheter maintenant</button>
+          </div>
+        </div>
+      </div>
+
+      <div className='flex flex-col gap-4 mt-5' >
+        <h2 className='text-2xl text-bold'>Recommandé pour vous</h2>
+        <div className='w-full grid grid-cols-1 ss:grid-cols-2 xx:grid-cols-3 md:grid-cols-3  lg:grid-cols-4 xg:grid-cols-5 xl:grid-cols-6  gap-4 justify-center  '>
+          {products?.map((item, index) => (
+            <CategorieProduct key={index} product={item} />
+          ))}
+        </div>
+      </div>
+    </>
   )
 }
 

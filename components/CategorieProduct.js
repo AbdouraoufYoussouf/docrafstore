@@ -11,9 +11,9 @@ const CategorieProduct = ({ product }) => {
 
   return (
     <div className=" bg-gray-100  text-gray-800 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col w-auto justify-between shadow-card ">
-      <div className="h-32 bg-white m-2 rounded-lg flex justify-center">
-        <Link className="card " href={`/product/${path}`}>
-          <img src={product?.images[0]} className="w-32 cursor-pointer" alt={product?.name} />
+      <div className=" bg-white cursor-pointer m-2 rounded-lg flex justify-center">
+        <Link  href={`/product/${path}`}>
+          <img src={product?.images[0]} className=" w-auto h-32" alt={product?.name} />
         </Link>
       </div>
       <div className="mx-2">

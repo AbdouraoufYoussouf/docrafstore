@@ -10,10 +10,10 @@ const CardProduct = ({ product }) => {
   const path = name?.split(" ").join("_");
 
   return (
-    <div className=" bg-gray-100 w-60 h-full text-gray-800 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col justify-between shadow-card max-lg:w-52">
-    <div className="h-32 bg-white m-2 rounded-lg flex justify-center">
-      <Link className="card " href={`/product/${path}`}>
-        <img src={product?.images[0]} className="w-32 cursor-pointer" alt={product?.name} />
+    <div className=" bg-gray-100 w-60 h-[310px] text-gray-800 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col justify-between shadow-card max-lg:w-52">
+    <div className=" bg-white m-2 rounded-lg flex justify-center">
+      <Link href={`/product/${path}`}>
+        <img src={product?.images[0]} className="h-32 w-auto cursor-pointer" alt={product?.name} />
       </Link>
     </div>
     <div className="mx-2">

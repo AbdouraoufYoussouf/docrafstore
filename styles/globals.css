@@ -12,6 +12,7 @@
 }
 
 @layer utilities {
+ 
   .heroheader {
     background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
     height:400px;
@@ -95,11 +96,14 @@ h2{
 
 .scrol::-webkit-scrollbar-thumb {
   border-radius: 7px;
-  background-color: tomato;
+  background-color: gray;
 }
 
 .h-v6{
   height: 400px;
+}
+.max-h-v5{
+  max-height: 450px;
 }
 .tomato{
   color: tomato;

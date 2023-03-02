@@ -20,27 +20,27 @@ const Footer = () => {
     <div className="flex justify-center items-center gap-2 fixed bottom-0 p-1 bg-gray-300 w-full border-2 border-t-cyan-400 ">
       <Link href={"/"} >
         <span>
-          <AiFillHome color={path ==="/" ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          <AiFillHome color={path ==="/" ? "tomato" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
       <Link href={"/mobiles"} >
         <span>
-          <BsPhoneFill color={path.includes("mobiles") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          <BsPhoneFill color={path.includes("mobiles") ? "tomato" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
       <Link href={"/pc"} >
         <span>
-          <MdOutlineComputer color={path.includes("pc") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          <MdOutlineComputer color={path.includes("pc") ? "tomato" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
       <Link href={"/casques"} >
         <span>
-          <FaHeadphones color={path.includes("casques") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          <FaHeadphones color={path.includes("casques") ? "tomato" :" hsl(244, 16%, 43%)"}  className='link' />
         </span>
       </Link>
       <Link href={"/ckeckout"} >
         <div style={{position:"relative"}}>
-          <FaShoppingBag color={path.includes("ckeckout") ? "hsl(43, 100%, 68%)" :" hsl(244, 16%, 43%)"}  className='link' />
+          <FaShoppingBag color={path.includes("ckeckout") ? "tomato" :" hsl(244, 16%, 43%)"}  className='link' />
           {length>0  && <span className="absolute bottom-7 left-7 bg-red-500 text-white font-bold p-0.5 w-6 h-6 rounded-full flex justify-center items-center ">{length}</span>}
         </div>
       </Link>

@@ -369,7 +369,7 @@ padding: 20px 10px;
 }
 .total{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-center;
 }
 .total h3{
   font-size: 22px;
@@ -379,7 +379,10 @@ padding: 20px 10px;
   font-size: 24px;
   color: #f02d34;
   cursor: pointer;
-  background: transparent;
+  background: t
+  
+  
+  ransparent;
   border: none;
 }
 .cart-bottom{

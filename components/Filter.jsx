@@ -94,7 +94,6 @@ const Filter = ({ data, setData,category}) => {
   }, [isMarque, isPrice]);
   
   // hide filter
-
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
@@ -106,9 +105,7 @@ const Filter = ({ data, setData,category}) => {
         setIsShowfiltrer(false)
       }
     };
-
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };

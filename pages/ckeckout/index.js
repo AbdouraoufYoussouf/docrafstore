@@ -66,7 +66,7 @@ const CkeckoutPage = () => {
 
       ) : (
 
-        <div class="flex justify-between items-start gap-4 max-md:flex-col">
+        <div class="flex justify-between items-start gap-4 max-md:flex-col  ">
 
           <div class="bg-gray-200  flex-1 rounded-lg">
             <h2 className="border-b border-orange-500  p-2 pb-1">Panier</h2>
