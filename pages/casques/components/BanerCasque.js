@@ -13,7 +13,7 @@ const BanerCasque = () => {
         <div className="flex flex-col grow justify-between items-start p-5 ">
           <p className="font-black uppercase text-4xl text-white max-lg:text-3xl max-lg:absolute max-lg:top-5 max-md:text-xl">
             the best of the best</p>
-          <div className="flex justify-center bac-text rounded-full text-center gap-4 text-white font-bold text-3xl max-md:text-lg bg-rose-500 p-3  top-32 left-25 max-lg:absolute max-sm:top-28  max-lg:left-20 max-sm:left-5">
+          <div className="flex justify-center bac-text rounded-full text-center gap-4 text-white font-bold text-3xl max-md:text-lg bg-rose-500 p-3  top-32 left-25 max-lg:absolute max-sm:top-28  max-lg:left-20 max-sm:left-5 max-sm:top-14">
             <span>70%</span>
             <span>OFF</span>
           </div>
@@ -28,7 +28,7 @@ const BanerCasque = () => {
         <div className="flex">
 
         <img src="/products/airpods.png" className=" p-3 absolute left-60 top-20 max-lg:hidden h-v3" />
-        <img src="/products/headset.png" className=" p-3 flex-1 h-v4" />
+        <img src="/products/casques/edifierx4/1.png" className=" p-3 flex-1 h-v4" />
         </div>
       </div>
 
@@ -42,7 +42,7 @@ const BanerCasque = () => {
             Today's Super offre
           </p>
         </div>
-        <button className="p-2 bg-rose-600 font-bold uppercase text-white rounded-lg z-10">
+        <button className="p-2 bg-rose-600 font-bold uppercase text-white rounded-lg z-10 hover:transform hover:scale-110 transition-transform duration-500 ease-in-out">
           Order Now
         </button>
         <div className="flex gap-2 justify-center self-center max-md:self-end">

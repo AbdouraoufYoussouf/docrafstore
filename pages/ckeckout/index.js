@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../../components/Layout";
 import { ProductContext } from "../../components/ProductContext";
 import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import ModalUser from "../../components/ModalUser";
 import Link from "next/link";
+import SeeRescent from "../../components/SeeRescent";
 
 const CkeckoutPage = () => {
   const { selectProducts, setSelectProducts } = useContext(ProductContext);
@@ -66,7 +66,7 @@ const CkeckoutPage = () => {
 
       ) : (
 
-        <div class="flex justify-between items-start gap-4 max-md:flex-col  ">
+        <div class="flex justify-between items-start gap-4 max-md:flex-col p-2 ">
 
           <div class="bg-gray-200  flex-1 rounded-lg">
             <h2 className="border-b border-orange-500  p-2 pb-1">Panier</h2>
@@ -169,6 +169,8 @@ const CkeckoutPage = () => {
           selectProducts={selectProducts}
         />
       )}
+
+      <SeeRescent/>
     </>
   );
 };

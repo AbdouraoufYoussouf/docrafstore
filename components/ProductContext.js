@@ -3,18 +3,36 @@ import useLocalStorageState from "use-local-storage-state";
 
 export const ProductContext = createContext()
 
-export function ProductContextProvider({children}){
-    const [selectProducts,setSelectProducts] = useLocalStorageState('cart',{defaultValue:[]})
-    function addProductCart(id) {
-        if(typeof selectProducts !== 'undefined'){
-          setSelectProducts((prev) => [...prev,id]);
-        }else{
-          setSelectProducts(id);
-        }
+export function ProductContextProvider({ children }) {
+  const [selectProducts, setSelectProducts] = useLocalStorageState('cart', { defaultValue: [] })
+  const [seeProducts, setSeeProducts] = useLocalStorageState('see', { defaultValue: [] })
+
+  // ajout au local state le produit vu rescent
+  function addProductSee(id) {
+    if (typeof selectProducts !== 'undefined') {
+      var existIds = seeProducts?.filter((p) => p.id !== id);
+      if (!seeProducts.includes(id)) {
+        setSeeProducts((prev) => [...prev, id]);
+      } else {
+        setSeeProducts(existIds);
       }
-    return(
-        <ProductContext.Provider value={{selectProducts,setSelectProducts,addProductCart}}>
-            {children}
-        </ProductContext.Provider>
-    )
+    } else {
+      setSelectProducts(id);
+    }
+  }
+  function addProductCart(id) {
+    if (typeof selectProducts !== 'undefined') {
+      setSelectProducts((prev) => [...prev, id]);
+    } else {
+      setSelectProducts(id);
+    }
+  }
+  return (
+    <ProductContext.Provider value={{
+      selectProducts, setSelectProducts, addProductCart,
+      seeProducts, addProductSee
+    }}>
+      {children}
+    </ProductContext.Provider>
+  )
 }

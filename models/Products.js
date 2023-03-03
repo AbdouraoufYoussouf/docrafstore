@@ -9,6 +9,10 @@ const ProductSchema = new Schema({
     type: String,
     required: true
   },
+  newp: {
+    type: Boolean,
+    required: false
+  },
   price: {
     type: Number,
     required: true

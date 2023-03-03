@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { BsFilterSquare } from 'react-icons/bs'
 import { RiMoneyPoundCircleLine } from 'react-icons/ri'
+import { Fade } from "react-reveal";
 
 const prixData = [
   { min: 0, max: 10, label: "Moins de 10€" },
@@ -112,8 +113,8 @@ const Filter = ({ data, setData,category}) => {
   }, []);
 
   return (
-
-    <div className="w-[210px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0  max-md:w-full "  >
+<Fade left duration={500}>
+    <div className="w-[230px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0  max-md:w-full "  >
       <div className="flex  cursor-pointer justify-between hover:bg-gray-200 hover:rounded-lg p-1 " onClick={() => !isShowfiltrer && setShowfiltrer(!showfiltrer)}>
 
         <BsFilterSquare className="hover:text-red-600" size={30} />
@@ -137,7 +138,7 @@ const Filter = ({ data, setData,category}) => {
                         name={marq}
                         value={marq}
                       />
-                      <h5 className="capitalize text-xm font-tury text-gray-500">{marq}</h5>
+                      <h5 className="capitalize text-xm font-bold font-tury text-gray-500">{marq}</h5>
                     </div>
                   )
               )}
@@ -155,7 +156,7 @@ const Filter = ({ data, setData,category}) => {
                     value={range.label}
                     onChange={handlePriceChange}
                   />
-                  <h5 className="italic font-mono font-bold">{range.label}</h5>
+                  <h5 className="italic text-xl font-mono font-bold text-gray-500">{range.label}</h5>
                 </div>
               ))}
             </div>
@@ -165,7 +166,7 @@ const Filter = ({ data, setData,category}) => {
 
 
     </div>
-
+</Fade>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import CategorieProduct from '../../components/CategorieProduct'
 import Filter from '../../components/Filter'
-import BanerCasque from '../casques/components/BanerCasque'
+import BanerPc from './components/BanerPc'
 
 const Pc = () => {
   const [data, setData] = useState([])
@@ -13,8 +13,8 @@ const Pc = () => {
   }, [])
   //console.log('first', data)
   return (
-    <div className='flex flex-col justify-center gap-4 mb-4 w-full '>
-       <BanerCasque />
+    <div id='pc' className='flex flex-col justify-center gap-4 mb-4 w-full '>
+       <BanerPc />
       <div className='flex gap-4 justify-between items-start w-full max-md:flex-col '>
           <Filter data={dataInit} setData={setData} category={"pc"} />
         

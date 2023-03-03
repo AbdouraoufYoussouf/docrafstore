@@ -3,12 +3,15 @@ import Link from "next/link";
 import styled from "styled-components";
 import { SlCallIn } from "react-icons/sl";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import { Fade } from "react-reveal";
 
 const HeroHeader = ({ heroBanner }) => {
   let name = heroBanner?.name
+  let images = heroBanner?.images
   const path = name?.split(" ").join("_");
   return (
     <div className="w-full flex justify-between items-start my-2 rounded-lg relative heroheader max-lg:p-3 max-xm:p-2">
+      <Fade duration={1000}>
       <BannerLeft>
         <div className="top">
 
@@ -16,7 +19,7 @@ const HeroHeader = ({ heroBanner }) => {
           <h2 className="name">{name}</h2>
           <p className="offer">aujourd’hui derniere offre </p>
           <Link href={`/product/${path}`} className=" ">
-          <span className="shopnow">Voir le produit</span>
+          <button className="shopnow">Voir le produit</button>
         </Link>
         </div>
         <div className="bottom">
@@ -26,10 +29,12 @@ const HeroHeader = ({ heroBanner }) => {
             <p className="number">0633851644</p>
           </span>
         </div>
-      </BannerLeft>
+      </BannerLeft></Fade>
+      <Fade duration={1000}>
       <BannerCenter>
-       <img src={"/products/headset.png"} />
-      </BannerCenter>
+       <img src={images && images[0]} />
+      </BannerCenter></Fade>
+      <Fade duration={1000}>
       <BannerRight>
         <div className="top">
           <span className="pourc">50%</span>
@@ -40,7 +45,7 @@ const HeroHeader = ({ heroBanner }) => {
           <FaInstagram className="social" />
           <FaTiktok className="social" />
         </div>
-      </BannerRight>
+      </BannerRight></Fade>
     </div>
   );
 };

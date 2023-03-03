@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 import connectMongo from "../lib/connectMongo"
 import Product from "../models/Products"
 import {GrLinkNext} from "react-icons/gr"
+import { Fade } from "react-reveal"
 
 export default function Home() {
   const [data, setData] = useState([])
@@ -26,10 +27,13 @@ export default function Home() {
   }
 
 
-  let limit = data?.length - 1
+
+  //donnes pour le heroheader
+  const newsProduct = products.filter((p)=>p.newp==true)
+  let limit = newsProduct?.length - 1
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(-1);
-
+ 
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevCount) => prevCount + increment);
@@ -48,10 +52,8 @@ export default function Home() {
 
   return (
     <>
-      <input placeholder="Search..."
-        value={phrase} onChange={e => setPhrase(e.target.value)}
-        className="bg-gray-100 w-full py-2 px-4 rounded-xl border border-t-cyan-400" />
-      {!phrase && <HeroHeader heroBanner={data.length && data[count]} />}
+      
+      {!phrase && <HeroHeader heroBanner={newsProduct.length && newsProduct[count]} />}
 
       <div className="mb-2">
         {
@@ -59,6 +61,7 @@ export default function Home() {
             <div key={index}>
               {products.find(p => p.category === categorie) && (
                 <div>
+                  <Fade duration={1000}>
                   <div className="flex justify-between items-center bg-gray-600 my-3 p-2 rounded-lg ">
                     <h2 className="text-2xl text-white font-bold capitalize">{categorie}</h2>
                     <Link href={`/${categorie}`}>
@@ -66,7 +69,7 @@ export default function Home() {
                       <GrLinkNext className="text-white-important"/>
                       </span>
                     </Link>
-                  </div>
+                  </div></Fade>
                   <div className="flex overflow-x-auto whitespace-no-wrap scrol" >
                   
                     {products.filter(p => p.category === categorie).map((p, i) => (
