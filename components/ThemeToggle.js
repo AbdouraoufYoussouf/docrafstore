@@ -1,27 +1,9 @@
-// components/ThemeToggle.js
-
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MdLightMode, MdNightlight } from 'react-icons/md';
+import { ProductContext } from './ProductContext';
 
 function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const isDark = localStorage.getItem('theme') === 'dark';
-    const theme = localStorage.getItem('theme');
-    console.log('theme:',theme)
-    setIsDarkMode(isDark);
-    if(isDarkMode){
-      document.documentElement.classList.add('dark')
-    }
-  }, [isDarkMode]);
-
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('theme', isDarkMode ? 'light' : 'dark');
-    document.documentElement.classList.toggle('dark');
-  };
+  const {isDarkMode,toggleTheme} = useContext(ProductContext)
 
   return (
     <button

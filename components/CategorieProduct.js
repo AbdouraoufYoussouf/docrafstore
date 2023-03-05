@@ -17,8 +17,9 @@ const CategorieProduct = ({ product }) => {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, ease: "easeOut" }}
+    className=" bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col w-auto justify-between shadow-card dark:hover:bg-violet-600 dark:hover:text-white"
   >
-    <div className=" bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-violet-600 hover:text-white rounded-lg flex flex-col w-auto justify-between shadow-card dark:hover:bg-violet-600 dark:hover:text-white">
+   
       <div className=" bg-gray-200 dark:bg-gray-900 p-1 cursor-pointer m-2 rounded-lg flex justify-center">
         <Link href={`/product/${path}`}  >
           <img
@@ -46,7 +47,7 @@ const CategorieProduct = ({ product }) => {
           <FaPlusSquare className="text-red-500 icon" size={30} />
         </button>
       </div>
-    </div>
+   
     </motion.div>
   );
 };

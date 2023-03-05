@@ -11,7 +11,7 @@
 }
 
 @layer utilities {
- 
+  
   .heroheader {
     background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
     height:400px;
@@ -61,6 +61,7 @@
   
   .dark h2 {
     color: hsl(0, 0%, 100%);
+    font-weight: bold;
   }
 
 .shadow{
@@ -217,8 +218,12 @@
 }
 
 .bg-deg{
-  background-image: linear-gradient(to right top, #46be70, #00bf9b, #00bdbe, #00b8d5, #4db1de, #66a7d8, #799cce, #8792c1, #8383b1, #7e73a0, #79658f, #73567e);}
-
+  background-image: linear-gradient(to right top, #46be70, #00bf9b, #00bdbe, #00b8d5, #4db1de, #66a7d8, #799cce, #8792c1, #8383b1, #7e73a0, #79658f, #73567e);
+}
+.dark .bg-deg{
+  background-image: linear-gradient(to right top, #46be70, #00bf9b, #00bdbe, #00b8d5, #4db1de, #66a7d8, #799cce, #8792c1, #8383b1, #7e73a0, #79658f, #73567e);
+  opacity: 0.8;
+}
   .bac-text {
   color: #ffffff;
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));

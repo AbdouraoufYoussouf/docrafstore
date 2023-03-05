@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import { ProductContext } from "./ProductContext";
+import ThemeToggle from "./ThemeToggle";
 
 const Layout = ({ children }) => {
   const [success, setSuccess] = useState(false);
@@ -26,6 +27,7 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/rafstore.png" />
       </Head>
       <div className="flex flex-col mb-12 p-2 bg-gray-300 dark:bg-gray-900 text-gray-700  dark:text-white justify-center min-h-screen">
+        
         {success && (
           <div className="mb-5 bg-green-400 text-white text-lg p-5 rounded-xl">
             Votre commande a bien éffectué avec successé , AnsumatiBoutique vous

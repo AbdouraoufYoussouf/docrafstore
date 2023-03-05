@@ -27,11 +27,11 @@ const HeroHeader = ({ heroBanner }) => {
           </span>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center self-center h-[116%]  " >
-        <img className="max-h-full w-auto z-0 max-lg:absolute max-lg:h-[70%] max-lg:b-[10px] max-lg:r-[20px] max-xm:h-1/2 max-xm:r-2 b-[60px] bg-red-500" src={images && images[0]} />
+      <div className="center-baner" >
+        <img className="img" src={images && images[0]} />
       </div>
       <div className="flex h-full flex-col items-center justify-between " >
-        <div className="bg-tomato text-white flex flex-col text-[25px] p-1 rounded-lg  ">
+        <div className="bg-tomato text-white flex flex-col text-[25px] p-3 rounded-lg  ">
           <span >50%</span>
           <span className="font-bold">OFF</span>
         </div>

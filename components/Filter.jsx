@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BsFilterSquare } from 'react-icons/bs'
 import { RiMoneyPoundCircleLine } from 'react-icons/ri'
+import { motion } from "framer-motion";
+
 
 const prixData = [
   { min: 0, max: 10, label: "Moins de 10€" },
@@ -112,7 +114,12 @@ const Filter = ({ data, setData,category}) => {
   }, []);
 
   return (
-    <div className="w-[230px] md:min-h-90 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 p-1 flex flex-col sticky top-0  max-md:w-full "  >
+    <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    
+    className="w-[230px] md:min-h-90 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 p-1 flex flex-col sticky top-0  max-md:w-full "  >
       <div onClick={()=>setShowfiltrer(!showfiltrer)} className="flex  cursor-pointer md:hidden justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
 
         <BsFilterSquare onClick={()=>setShowfiltrer(!showfiltrer)} className="hover:text-red-600" size={30} />
@@ -161,7 +168,7 @@ const Filter = ({ data, setData,category}) => {
                     onChange={handlePriceChange}
                     className="form-checkbox h-4 w-4"
                   />
-                  <h5 className="italic text-lg font-tury font-bold text-gray-500">{range.label}</h5>
+                  <h5 className="italic text-lg font-tury font-bold text-gray-400">{range.label}</h5>
                 </div>
               ))}
             </div>
@@ -170,7 +177,7 @@ const Filter = ({ data, setData,category}) => {
       }
 
 
-    </div>
+    </motion.div>
   );
 };
 

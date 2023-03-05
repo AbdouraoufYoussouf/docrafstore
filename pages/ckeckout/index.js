@@ -53,7 +53,7 @@ const CkeckoutPage = () => {
     setShow(!show);
   };
   return (
-    <>
+    <div className=" dark:bg-gray-900 h-full mb-4 rounded-lg">
       {selectProducts.length === 0 ? (
         <div className="h-60 w-100 bg-gray-500 rounded-lg gap-2 flex flex-col justify-center items-center text-white text-center" >
           <img className="h-20" src="/logo1.png" />
@@ -66,16 +66,16 @@ const CkeckoutPage = () => {
 
       ) : (
 
-        <div class="flex justify-between items-start gap-4 max-md:flex-col p-2 ">
+        <div class="flex justify-between  items-start gap-4 max-md:flex-col p-2 ">
 
           <div class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
-            <h2 className="border-b border-orange-500  p-2 pb-1">Panier</h2>
+            <h3 className="border-b border-orange-500 font-bold text-xl p-2 pb-1">Panier</h3>
             {productInfo.map((product) => {
               const name = product?.name;
               const path = name.split(" ").join("_");
               return (
                 <div key={product._id} className="flex p-4 rounded-lg shadow relative">
-                  <div className="bg-white dark:bg-gray-900 p-3 flex rounded-xl shrink-0">
+                  <div className="bg-gray-300 dark:bg-gray-900 p-3 flex rounded-xl shrink-0">
                     <Link className="" href={`/product/${path}`}>
                       <img className="w-28 cursor-pointer w-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
                     </Link>
@@ -128,7 +128,7 @@ const CkeckoutPage = () => {
           {/* PARTIE RESUME DU PANIER */}
 
           <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky top-0 max-md:w-full">
-            <h2 className="border-b border-orange-500 p-2 pb-1">Resumé du Panier</h2>
+            <h3 className="border-b font-bold text-xl border-orange-500 p-2 pb-1">Resumé du Panier</h3>
             <div className="p-4 pt-2">
               <div >
                 <div className="flex my-3">
@@ -171,7 +171,7 @@ const CkeckoutPage = () => {
       )}
 
       <SeeRescent />
-    </>
+    </div>
   );
 };
 
