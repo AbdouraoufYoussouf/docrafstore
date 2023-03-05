@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../components/ProductContext";
-import { FaPlusSquare, FaMinusSquare } from "react-icons/fa";
-import { RiDeleteBin5Line } from "react-icons/ri";
+import { FaPlusSquare, FaMinusSquare ,FaCcPaypal} from "react-icons/fa";
+import { GrPaypal } from "react-icons/gr";
+import { RiDeleteBin5Line,RiSecurePaymentFill } from "react-icons/ri";
+import { MdDeliveryDining } from "react-icons/md";
 import ModalUser from "../../components/ModalUser";
 import Link from "next/link";
 import SeeRescent from "../../components/SeeRescent";
@@ -53,7 +55,7 @@ const CkeckoutPage = () => {
     setShow(!show);
   };
   return (
-    <div className=" dark:bg-gray-900 h-full mb-4 rounded-lg">
+    <div className=" dark:bg-gray-900 h-full mb-4 rounded-lg h-screen">
       {selectProducts.length === 0 ? (
         <div className="h-60 w-100 bg-gray-500 rounded-lg gap-2 flex flex-col justify-center items-center text-white text-center" >
           <img className="h-20" src="/logo1.png" />
@@ -100,7 +102,7 @@ const CkeckoutPage = () => {
                         <FaMinusSquare
                           onClick={() => moinsProduct(product._id)}
                           className="dark:text-gray-300 icon"
-                          
+
                         />
                         <span className="num">
                           {selectProducts.filter((id) => id === product._id).length}
@@ -115,7 +117,7 @@ const CkeckoutPage = () => {
                       <RiDeleteBin5Line
                         onClick={() => deleteProduct(product._id)}
                         className="icon delete sm:hidden text-red-400"
-                        
+
                       />
                     </div>
                   </div>
@@ -126,35 +128,57 @@ const CkeckoutPage = () => {
           </div>
 
           {/* PARTIE RESUME DU PANIER */}
-
-          <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky top-0 max-md:w-full">
-            <h3 className="border-b font-bold text-xl border-orange-500 p-2 pb-1">Resumé du Panier</h3>
-            <div className="p-4 pt-2">
-              <div >
-                <div className="flex my-3">
-                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Quantité Total</p>
-                  <p className="font-bold">{selectProducts.length} produt(s)</p>
+          <div className="flex flex-col gap-4 max-md:w-full ">
+            <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky max-md:mb-16 top-0 max-md:relative max-md:w-full">
+              <h3 className="border-b font-bold text-xl capitalize border-orange-500 p-2 pb-1">Resumé du Panier</h3>
+              <div className="p-4 pt-2">
+                <div >
+                  <div className="flex my-3">
+                    <p className="grow font-bold text-gray-500 dark:text-gray-200">Quantité Total</p>
+                    <p className="font-bold">{selectProducts.length} produt(s)</p>
+                  </div>
+                  <div className="flex my-3">
+                    <p className="grow font-bold text-gray-500 dark:text-gray-200">Prix Total</p>
+                    <p className="font-bold">{achatTotal} €</p>
+                  </div>
+                  <div className="flex my-3">
+                    <p className="grow font-bold text-sm text-gray-500 dark:text-gray-200">Livraison</p>
+                    <p className="font-bold text-sm">{livraison} €</p>
+                  </div>
+                  <div className="flex my-3 border-t pt-3 border-dashed border-emerald-500">
+                    <p className="grow font-bold text-gray-500 dark:text-gray-200">Somme Total</p>
+                    <p className="font-bold">{total} €</p>
+                  </div>
                 </div>
-                <div className="flex my-3">
-                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Prix Total</p>
-                  <p className="font-bold">{achatTotal} €</p>
-                </div>
-                <div className="flex my-3">
-                  <p className="grow font-bold text-sm text-gray-500 dark:text-gray-200">Livraison</p>
-                  <p className="font-bold text-sm">{livraison} €</p>
-                </div>
-                <div className="flex my-3 border-t pt-3 border-dashed border-emerald-500">
-                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Somme Total</p>
-                  <p className="font-bold">{total} €</p>
-                </div>
+                <button
+                  onClick={() => setShow(!show)}
+                  className="bg-emerald-500 px-5 py-2 rounded-xl shadow-emerald-300 shadow-lg text-white w-full font-bold"
+                >
+                  Payé {total} €
+                </button>
               </div>
-              <button
-                onClick={() => setShow(!show)}
-                className="bg-emerald-500 px-5 py-2 rounded-xl shadow-emerald-300 shadow-lg text-white w-full font-bold"
-              >
-                Payé {total} €
-              </button>
             </div>
+            {/* choisir le moyen de payement */}
+            {/* <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg max-md:mb-16 max-md:w-full">
+              <h3 className="border-b font-bold text-xl border-orange-500 p-2 pb-1 capitalize">moyen de paiement</h3>
+                
+                <div className="mx-2 py-2">
+                  <div className="flex  items-center gap-3 hover:bg-red-400 p-2 rounded cursor-pointer">
+                    <RiSecurePaymentFill className="text-3xl"/>
+                    <img src="/pay/visa.png" alt="paypal" className="h-8 "  />
+                  </div>
+                  <div className="flex items-center gap-3 hover:bg-red-400 p-2 rounded cursor-pointer">
+                    <GrPaypal className="text-3xl"/>
+                    <img src="/pay/paypal.png" alt="visa" className="h-8 "  />
+                  </div>
+                  <div className="flex items-center gap-3 hover:bg-red-400 p-2 rounded cursor-pointer">
+                    <MdDeliveryDining className="text-3xl"/>
+                    <p>Paiement à la vivraison</p>
+                  </div>
+               
+              </div>
+            </div> */}
+
           </div>
         </div>)
 
