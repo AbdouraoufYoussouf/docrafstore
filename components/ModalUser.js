@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
 import Sentry from "react-activity/dist/Dots";
 import "react-activity/dist/Dots.css";
 
@@ -50,13 +49,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
             setAdressError("");
         }
     };
-    //Fonction du button envoie si le formulaire n'est pas valide
-    function handlNotValid() {
-        validateName()
-        validateEmail()
-        validateCity()
-        validateAdress()
-    }
+   
     //Variable qui contient tous les erreurs s'il ya error
 
  
@@ -79,16 +72,16 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
         });
 
     return (
-        <Modal>
-            <div className="modal">
-                <span style={{ display: "none" }}> Modal</span>
-                <div className="modal-header">
+        <div className="modal-container">
+            <span className="hidden"> modal</span>
+            <div className="w-[60%] bg-white dark:bg-gray-900 p-4  rounded-lg m-1 max-lg:w-[98%] ">
+                <div className="mb-2 flex justify-between">
                     <h2>Confirmé la commande</h2>
                     <button className="bg-red-500 rounded-lg p-1 text-white" onClick={toggleModal}>
                         Close X
                     </button>
                 </div>
-                <div className="modal-content">
+                <div className="flex justify-between items-center ">
                     <form action="api/products/checkout" method="POST" onsubmit="event.preventDefault(); handleSubmit(event)">
                         <div>
                             <input
@@ -102,8 +95,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 value={name}
                                 className={
                                     nameError
-                                        ? "border-b border-red-500 bg-gray-100 w-full rounded-lg px-4 py-2 "
-                                        : "bg-gray-100 w-full rounded-lg px-4 py-2"
+                                        ? "border-b  form-input rounded-lg px-4 py-2 border-red-500 mt-3"
+                                        : " form-input text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
                                 }
                                 placeholder="Full Name"
                             />
@@ -118,8 +111,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 }}
                                 className={
                                     emailError
-                                        ? "border-b border-red-500 bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
-                                        : "bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
+                                        ? "border-b  form-input rounded-lg px-4 py-2 border-red-500 mt-3"
+                                        : "form-input text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
                                 }
                                 placeholder="Email"
                             />
@@ -134,8 +127,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 }}
                                 className={
                                     cityError
-                                        ? "border-b border-red-500 bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
-                                        : "bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
+                                        ? "border-b  form-input rounded-lg px-4 py-2 border-red-500 mt-3"
+                                        : "form-input text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
                                 }
                                 placeholder="Ville"
                             />
@@ -150,8 +143,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 }}
                                 className={
                                     adressError
-                                        ? "border-b border-red-500 bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
-                                        : "bg-gray-100 w-full rounded-lg px-4 py-2 mt-3"
+                                        ? "border-b  form-input rounded-lg px-4 py-2 border-red-500 mt-3"
+                                        : "form-input text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
                                 }
                                 placeholder="Adresse"
                             />
@@ -165,10 +158,10 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                         {!loding ? (<button type="submit" disabled={!isFormValid}
                          className={
                             !isFormValid
-                                ? " px-5 py-2 mt-4 rounded-xl shadow-emerald-100 shadow-lg text-white w-full font-bold bg-gray-300 "
-                                : "bg-emerald-500 px-5 py-2 mt-4 rounded-xl shadow-emerald-100 shadow-lg text-white w-full font-bold"
+                                ? " px-5 py-2 mt-4 rounded-xl shadow-emerald-700 shadow-lg text-white w-full font-bold bg-gray-300 dark:bg-gray-400 "
+                                : "bg-emerald-500 px-5 py-2 mt-4 rounded-xl shadow-emerald-700 shadow-lg text-white w-full font-bold"
                         }
-                                > Payé {total} Dhs</button>
+                                > Payé {total} €</button>
                         ) : (
                             <div
                                 style={{
@@ -186,46 +179,11 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                     </form>
                 </div>
             </div>
-        </Modal>
+        </div>
     );
 };
 
 export default ModalUser;
 
-const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .modal {
-    width: 70%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    margin: 1rem;
-  }
 
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
-  .modal-header h2 {
-    margin: 0;
-  }
-
-  .modal-content {
-    margin-top: 20px;
-  }
-  @media screen and (max-width:900px) {
-    .modal{
-        width: 98%;
-    }
-  }
-`;

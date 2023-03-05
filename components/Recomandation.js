@@ -6,7 +6,7 @@ const Recomandation = ({ products, name }) => {
     const marque = products.find((p) => p.name === name).marque;
     const category = products.find((p) => p.name === name).category;
     const productByMarque = products.filter((product) => product.marque === marque).filter((prod)=>prod.name!==name)
-    const productByCatergory = products.filter((product) => product.category === category).slice(0, 6);
+    const productByCatergory = products.filter((product) => product.category === category).filter((prod)=>prod.name!==name).slice(0, 6);
 
     return (
         <div className='flex flex-col gap-4 mt-5' >

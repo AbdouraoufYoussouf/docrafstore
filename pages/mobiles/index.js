@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import CategorieProduct from '../../components/CategorieProduct'
 import Filter from '../../components/Filter'
+import connectMongo from '../../lib/connectMongo'
+import Product from '../../models/Products'
 import BanerMobiles from './components/BanerMobiles'
 
-const Mobile = () => {
-  const [data, setData] = useState([])
-  const [dataInit, setDataInit] = useState([])
-  useEffect(() => {
-    fetch('api/products/getAll')
-      .then(res => res.json())
-      .then(json => {setData(json), setDataInit(json)})
-  }, [])
-  //console.log('first', data)
+const Mobile = ({products}) => {
+  const [data, setData] = useState(products)
+  const [dataInit, setDataInit] = useState(products)
+  
   return (
     <div id='mobiles' className='flex flex-col justify-center gap-4 mb-4 w-full '>
        <BanerMobiles />
@@ -33,3 +30,13 @@ const Mobile = () => {
 
 export default Mobile
 
+export const getServerSideProps = async () => {
+  await connectMongo();
+  const products = await Product.find();
+
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+    },
+  };
+};

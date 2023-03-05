@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import { BsFilterSquare } from 'react-icons/bs'
 import { RiMoneyPoundCircleLine } from 'react-icons/ri'
-import { Fade } from "react-reveal";
 
 const prixData = [
   { min: 0, max: 10, label: "Moins de 10€" },
@@ -14,6 +12,7 @@ const prixData = [
   { min: 2000, max: 100000000, label: "Plus 2000€" }
 ];
 const Filter = ({ data, setData,category}) => {
+
   const [showfiltrer, setShowfiltrer] = useState(true)
   const [isShowfiltrer, setIsShowfiltrer] = useState(false)
 
@@ -113,20 +112,24 @@ const Filter = ({ data, setData,category}) => {
   }, []);
 
   return (
-<Fade left duration={500}>
-    <div className="w-[230px] md:min-h-90 bg-gray-100 rounded-lg text-gray-600 p-1 flex flex-col sticky top-0  max-md:w-full "  >
-      <div className="flex  cursor-pointer justify-between hover:bg-gray-200 hover:rounded-lg p-1 " onClick={() => !isShowfiltrer && setShowfiltrer(!showfiltrer)}>
+    <div className="w-[230px] md:min-h-90 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 p-1 flex flex-col sticky top-0  max-md:w-full "  >
+      <div onClick={()=>setShowfiltrer(!showfiltrer)} className="flex  cursor-pointer md:hidden justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
 
-        <BsFilterSquare className="hover:text-red-600" size={30} />
+        <BsFilterSquare onClick={()=>setShowfiltrer(!showfiltrer)} className="hover:text-red-600" size={30} />
+        <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
+      </div>
+      <div className="flex max-md:hidden cursor-pointer justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
+
+        <BsFilterSquare  className="hover:text-red-600 " size={30} />
         <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
       </div>
       {
         showfiltrer &&
-        <div className="flex flex-col max-md:flex-row p-1 gap-3 bg-gray-100 rounded-lg">
+        <div className="flex flex-col max-md:flex-row p-1 gap-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
 
           <div className=" flex flex-col  basis-1">
             <h3 className="text-left font-bold text-lg">Marque</h3>
-            <div className="flex flex-col max-md:flex-row max-md:flex-wrap max-md:justify-cennter max-md:items-start max-xs:gap-1 max-md:max-h-32  overflow-y-auto">
+            <div className="flex flex-col max-md:flex-row max-md:flex-wrap max-md:justify-cennter max-md:items-start max-xs:gap-1 max-md:max-h-32  overflow-y-auto scrol">
               {marques.map(
                 (marq, index) =>
                   marq !== "" && (
@@ -137,8 +140,9 @@ const Filter = ({ data, setData,category}) => {
                         id={index}
                         name={marq}
                         value={marq}
+                        className="form-checkbox h-4 w-4"
                       />
-                      <h5 className="capitalize text-xm font-bold font-tury text-gray-500">{marq}</h5>
+                      <h5 className="capitalize text-xm font-bold font-tury text-gray-500 dark:text-gray-400">{marq}</h5>
                     </div>
                   )
               )}
@@ -155,8 +159,9 @@ const Filter = ({ data, setData,category}) => {
                     id={index}
                     value={range.label}
                     onChange={handlePriceChange}
+                    className="form-checkbox h-4 w-4"
                   />
-                  <h5 className="italic text-xl font-mono font-bold text-gray-500">{range.label}</h5>
+                  <h5 className="italic text-lg font-tury font-bold text-gray-500">{range.label}</h5>
                 </div>
               ))}
             </div>
@@ -166,14 +171,7 @@ const Filter = ({ data, setData,category}) => {
 
 
     </div>
-</Fade>
   );
 };
 
 export default Filter;
-
-
-const Prix = styled.div`
-  overflow: scroll;
-  overflow: auto;
-`;

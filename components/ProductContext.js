@@ -6,6 +6,7 @@ export const ProductContext = createContext()
 export function ProductContextProvider({ children }) {
   const [selectProducts, setSelectProducts] = useLocalStorageState('cart', { defaultValue: [] })
   const [seeProducts, setSeeProducts] = useLocalStorageState('see', { defaultValue: [] })
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   // ajout au local state le produit vu rescent
   function addProductSee(id) {
@@ -30,7 +31,7 @@ export function ProductContextProvider({ children }) {
   return (
     <ProductContext.Provider value={{
       selectProducts, setSelectProducts, addProductCart,
-      seeProducts, addProductSee
+      seeProducts, addProductSee,isDarkMode,setIsDarkMode
     }}>
       {children}
     </ProductContext.Provider>

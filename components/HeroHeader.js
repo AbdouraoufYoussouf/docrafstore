@@ -1,215 +1,50 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
 import { SlCallIn } from "react-icons/sl";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
-import { Fade } from "react-reveal";
 
 const HeroHeader = ({ heroBanner }) => {
   let name = heroBanner?.name
   let images = heroBanner?.images
   const path = name?.split(" ").join("_");
   return (
-    <div className="w-full flex justify-between items-start my-2 rounded-lg relative heroheader max-lg:p-3 max-xm:p-2">
-      <Fade duration={1000}>
-      <BannerLeft>
-        <div className="top">
+    <div className="w-full relative  flex justify-between items-start my-2 rounded-lg heroheader max-lg:p-3 max-xm:p-2">
+      <div className="flex h-full flex-col items-start justify-around gap-1 text-gray-500 max-xm:justify-between" >
+        <div className="italic uppercase flex flex-col justify-center items-start gap-px font-andale text-white max-xm:gap-[14px] max-xm:mt-2 ">
 
-          <p className="new">new and modern</p>
-          <h2 className="name">{name}</h2>
-          <p className="offer">aujourd’hui derniere offre </p>
+          <p className="font-bold text-[25px] text-gray-200 dark:text-gray-300 max-xm:text-[20px]">new and modern</p>
+          <h2 className="font-900 text-[40px] text-box-md  tomato max-lg:text-[30px] max-xm:text-[22px]  ">{name}</h2>
+          <p className=" text-lg max-md:text-sm">aujourd’hui derniere offre </p>
           <Link href={`/product/${path}`} className=" ">
-          <button className="shopnow">Voir le produit</button>
-        </Link>
+            <button className="font-bold text-lg text-white py-[8px] px-[15px] uppercase rounded-lg text-white z-10 max-lg:text-[18px] max-xm:text-[14px] max-xm:p-[7px] bg-tomato">Voir le produit</button>
+          </Link>
         </div>
-        <div className="bottom">
-          <SlCallIn className="b-left" />
-          <span className="b-rigth">
-            <p className="call">Appel pour livraison</p>
-            <p className="number">0633851644</p>
+        <div className="flex justify-center items-start gap-1 text-white">
+          <SlCallIn className="self-center text-[35px] tomato max-xm:text-[25px]  " />
+          <span className="flex flex-col gap-px self-center">
+            <p className="font-tury uppercase z-10 max-xm:text-[14px] ">Appel pour livraison</p>
+            <p className="font-900 text-lg font-mono">0633851644</p>
           </span>
         </div>
-      </BannerLeft></Fade>
-      <Fade duration={1000}>
-      <BannerCenter>
-       <img src={images && images[0]} />
-      </BannerCenter></Fade>
-      <Fade duration={1000}>
-      <BannerRight>
-        <div className="top">
-          <span className="pourc">50%</span>
-          <span className="off">OFF</span>
+      </div>
+      <div className="flex flex-col items-center justify-center self-center h-[116%]  " >
+        <img className="max-h-full w-auto z-0 max-lg:absolute max-lg:h-[70%] max-lg:b-[10px] max-lg:r-[20px] max-xm:h-1/2 max-xm:r-2 b-[60px] bg-red-500" src={images && images[0]} />
+      </div>
+      <div className="flex h-full flex-col items-center justify-between " >
+        <div className="bg-tomato text-white flex flex-col text-[25px] p-1 rounded-lg  ">
+          <span >50%</span>
+          <span className="font-bold">OFF</span>
         </div>
-        <div className="bottom">
-          <FaFacebook  className="social" />
+        <div className="flex gap-0.5">
+          <FaFacebook className="social" />
           <FaInstagram className="social" />
           <FaTiktok className="social" />
         </div>
-      </BannerRight></Fade>
+      </div>
     </div>
   );
 };
 
 export default HeroHeader;
 
-const BannerLeft = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  gap: 3rem;
-    color: hsl(244, 16%, 43%);
-  .top{
-    font-style: italic;
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      gap: .5rem;
-      font-family: Andale Mono, monospace;
-      color: white;
-    }
-    .new{
-      font-weight: bold;
-      font-size: 25px;
-      color: white;
-    }
-    .name{
-      font-weight: 900;
-      font-size: 40px;
-      color: tomato;
-    }
-    .shopnow{
-      font-weight: bold;
-      font-size: 20px;
-      background-color: tomato;
-      padding: 15px 8px;
-      text-transform: uppercase;
-      border-radius: 7px;
-      color: white;
-      z-index: 10;
-    }
-    //bottom
-.bottom{
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1rem;
-  color: white;
-}
-.b-left{
-  align-self: center;
-  font-size: 35px;
-  color: tomato;
-}
-.b-rigth{
-  display: flex;
-  flex-direction: column;
-  gap: .2rem;
-  align-self: center;
-  
-}
-  .call{
-    font-family: 'Courier New', Courier, monospace;
-    text-transform: uppercase;
-    z-index: 10;
-  }
-  .number{
-    font-weight: 900;
-    font-size: 20px;
-    font-family: monospace;
-  }
-  @media screen and (max-width:900px) {
-    .new{
-      font-size: 25px;
-    }
-    .name{
-      font-size: 30px;
-    }
-    .shopnow{
-      font-weight: bold;
-      font-size: 18px;   
-    }
-  }
-  @media screen and (max-width:500px) {
-    justify-content: space-between;
-    .top{
-      margin-top: 2rem;
-      gap: 14px;
-    }
-    .new{
-      font-size: 20px;
-    }
-    .name{
-      font-size: 25px;
-    }
-    .shopnow{
-      font-size: 16px;
-      padding: 7px ;
-    }
-    .call{
-      font-size: 14px;
-    }
-    .b-left{
-  font-size: 25px;
-}
-  }
-`;
 
-const BannerCenter = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  height: 116%;
-  img{
-    max-height: 100%;
-    width: auto;
-    z-index: 0;
-  }
-  @media screen and (max-width:800px) {
-    img{
-      position: absolute;
-      height: 70%;
-      bottom: 10px;
-      right: 50px;
-    }
-  }
-  @media screen and (max-width:500px) {
-    background-color: red;
-    img{
-      position: absolute;
-      height: 50%;
-      right: 10px;
-      bottom: 60px;
-    }
-  }
-`;
-
-const BannerRight = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-justify-content: space-between;
-.top{
-  background-color: tomato;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-size: 25px;
-  padding: 1rem;
-  border-radius: 50%;
- 
-}
-.off{
-  font-weight: bold;
-}
-.bottom{
-display:flex;
-gap: 0.4rem;
-}
-`;

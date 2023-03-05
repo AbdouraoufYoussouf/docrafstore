@@ -34,16 +34,16 @@ const ProductDetails = ({ products,product }) => {
           <div className="mb-3" >
 
             <div className="flex p-4 gap-4 max-lg:flex-col max-sm:p-1 ">
-              <div className=" w-[40%] max-lg:h-[350px]  max-lg:w-auto max-h-[500px] border flex flex-col justify-between bg-white rounded-lg ">
-                <div className="flex justify-center p-2 h-[80%]  gap-4 rounded-tl-lg rounded-tr-lg hover:bg-red-400">
+              <div className=" w-[40%] max-lg:h-[350px]  max-lg:w-auto max-h-[500px] border dark:border-gray-500 flex flex-col justify-between bg-gray-200 dark:bg-gray-800 rounded-lg ">
+                <div className="flex justify-center p-2 h-[80%]  gap-4 rounded-tl-lg rounded-tr-lg hover:bg-red-400 ">
                   {images?.length > 0 ? <img src={images[index]} className="w-auto h-full" /> : <img src='/logo1.png' className="w-auto h-full" />}
                 </div>
-                <div className="flex justify-center gap-1 h-[20%] bg-gray-300 rounded-bl-lg rounded-br-lg overflow-auto scrol p-1">
+                <div className="flex justify-center gap-1 h-[20%] bg-gray-100 dark:bg-gray-700 rounded-bl-lg rounded-br-lg  overflow-auto scrol p-1">
                   {images?.map((img, i) => (
                     <img
                       key={i}
                       src={img}
-                      className={`p-1 h-full cursor-pointer bg-gray-200 hover:bg-red-400 border rounded-lg ${i === index ? "bg-red-400" : ""
+                      className={`p-1 h-full cursor-pointer bg-gray-200 dark:bg-gray-900 hover:bg-red-400 dark:hover:bg-red-400  rounded-lg ${i === index ? "bg-red-400 dark:bg-red-400" : ""
                         }`}
                       onMouseEnter={() => setIndex(i)}
                     />
@@ -53,7 +53,7 @@ const ProductDetails = ({ products,product }) => {
 
               <div className="flex flex-col justify-between flex-1 gap-2">
                 <div className="flex flex-col gap-2">
-                  <h1 className="text-2xl font-bold text-gray-700">{name}</h1>
+                  <h2 className="text-2xl font-bold text-gray-700">{name}</h2>
                   <div className="flex gap-1 items-center">
                     <div className="flex items-center">
                       <AiFillStar className="text-red-600" />
@@ -81,11 +81,11 @@ const ProductDetails = ({ products,product }) => {
                   </div>
                 </div>
 
-                <div className="flex max-sm:flex-col max-sm:gap-1 gap-6 border p-4 rounded-lg justify-center">
+                <div className="flex max-sm:flex-col max-sm:gap-1 gap-6 border dark:border-gray-500 p-4 rounded-lg justify-center">
                   <button
                     onClick={() => addProductCart(product._id)}
                     type="button"
-                    className="p-2 rounded border border-red-600 text-red-600 text-lg font-semibold hover:transform hover:scale-110 transition-transform duration-500 ease-in-out"
+                    className="p-2 rounded border border-red-600 text-red-600 dark:text-gray-200 dark:border-gray-200 text-lg font-semibold hover:transform hover:scale-110 transition-transform duration-500 ease-in-out"
                   >
                     Ajouter au panier
                   </button>

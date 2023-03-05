@@ -68,14 +68,14 @@ const CkeckoutPage = () => {
 
         <div class="flex justify-between items-start gap-4 max-md:flex-col p-2 ">
 
-          <div class="bg-gray-200  flex-1 rounded-lg">
+          <div class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
             <h2 className="border-b border-orange-500  p-2 pb-1">Panier</h2>
             {productInfo.map((product) => {
               const name = product?.name;
               const path = name.split(" ").join("_");
               return (
                 <div key={product._id} className="flex p-4 rounded-lg shadow relative">
-                  <div className="bg-gray-100 p-3 flex rounded-xl shrink-0">
+                  <div className="bg-white dark:bg-gray-900 p-3 flex rounded-xl shrink-0">
                     <Link className="" href={`/product/${path}`}>
                       <img className="w-28 cursor-pointer w-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
                     </Link>
@@ -84,7 +84,7 @@ const CkeckoutPage = () => {
                   <div className="flex max-sm:flex-col ">
                     <div className="pl-4">
                       <h3 className="font-bold text-lg">{product.name}</h3>
-                      <p className="text-box text-sm leading-5 text-gray-500 " >
+                      <p className="text-box text-sm leading-5 text-gray-500 dark:text-gray-300 " >
                         {product.description}
                       </p>
                       <RiDeleteBin5Line
@@ -99,23 +99,23 @@ const CkeckoutPage = () => {
                       <div className="quantity-desc m-2">
                         <FaMinusSquare
                           onClick={() => moinsProduct(product._id)}
-                          className=" icon"
-                          color="hsl(244, 74%, 26%)"
+                          className="dark:text-gray-300 icon"
+                          
                         />
                         <span className="num">
                           {selectProducts.filter((id) => id === product._id).length}
                         </span>
                         <FaPlusSquare
                           onClick={() => plusProduct(product._id)}
-                          className="btn icon"
+                          className=" icon "
                           color="tomato"
                         />
                       </div>
 
                       <RiDeleteBin5Line
                         onClick={() => deleteProduct(product._id)}
-                        className="icon delete sm:hidden"
-                        color="red"
+                        className="icon delete sm:hidden text-red-400"
+                        
                       />
                     </div>
                   </div>
@@ -127,24 +127,24 @@ const CkeckoutPage = () => {
 
           {/* PARTIE RESUME DU PANIER */}
 
-          <div class="bg-gray-200   w-60 rounded-lg sticky top-0 max-md:w-full">
+          <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky top-0 max-md:w-full">
             <h2 className="border-b border-orange-500 p-2 pb-1">Resumé du Panier</h2>
             <div className="p-4 pt-2">
               <div >
                 <div className="flex my-3">
-                  <p className="grow font-bold text-gray-500">Quantité Total</p>
+                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Quantité Total</p>
                   <p className="font-bold">{selectProducts.length} produt(s)</p>
                 </div>
                 <div className="flex my-3">
-                  <p className="grow font-bold text-gray-500">Prix Total</p>
+                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Prix Total</p>
                   <p className="font-bold">{achatTotal} €</p>
                 </div>
                 <div className="flex my-3">
-                  <p className="grow font-bold text-sm text-gray-500">Livraison</p>
+                  <p className="grow font-bold text-sm text-gray-500 dark:text-gray-200">Livraison</p>
                   <p className="font-bold text-sm">{livraison} €</p>
                 </div>
                 <div className="flex my-3 border-t pt-3 border-dashed border-emerald-500">
-                  <p className="grow font-bold text-gray-500">Somme Total</p>
+                  <p className="grow font-bold text-gray-500 dark:text-gray-200">Somme Total</p>
                   <p className="font-bold">{total} €</p>
                 </div>
               </div>
@@ -170,7 +170,7 @@ const CkeckoutPage = () => {
         />
       )}
 
-      <SeeRescent/>
+      <SeeRescent />
     </>
   );
 };
