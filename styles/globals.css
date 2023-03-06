@@ -138,8 +138,10 @@
 .icon{
   font-size: 25px;
   cursor: pointer;
+  transition: all 0.5s linear;
   &&:hover{
-    color: blue !important;
+    color: white;
+    background: #ff4a57;
   }
   @media screen and (max-width:640px) {
     font-size: 20px !important;
@@ -211,7 +213,7 @@
 }
 .social:hover{
   color: white;
-  background: #ff4a57;;
+  background: #ff4a57;
     border: 2px solid transparent;
 }
 
