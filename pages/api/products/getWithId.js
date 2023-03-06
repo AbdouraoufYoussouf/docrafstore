@@ -7,6 +7,7 @@ import Product from "../../../models/Products";
  */
 
 export default async function getWithId(req, res) {
+   await connectMongo()
     const { ids } = req.query
     if (ids) {
         const idsArray = ids.split(',')

@@ -7,8 +7,10 @@ import { MdDeliveryDining } from "react-icons/md";
 import ModalUser from "../../components/ModalUser";
 import Link from "next/link";
 import SeeRescent from "../../components/SeeRescent";
+import connectMongo from "../../lib/connectMongo";
+import Product from "../../models/Products";
 
-const CkeckoutPage = () => {
+const CkeckoutPage = ({products}) => {
   const { selectProducts, setSelectProducts } = useContext(ProductContext);
   const [productInfo, setProductInfo] = useState([]);
   const [show, setShow] = useState(false);
@@ -34,9 +36,9 @@ const CkeckoutPage = () => {
   useEffect(() => {
     if (selectProducts?.length > 0) {
       const uniqIds = [...new Set(selectProducts)];
-      fetch("api/products/getWithId?ids=" + uniqIds.join(","))
-        .then((res) => res.json())
-        .then((json) => setProductInfo(json));
+      const filteredProducts = products.filter((product) => uniqIds.includes(product._id.toString()));
+      console.log('card',filteredProducts)
+      setProductInfo(filteredProducts)
     }
   }, [selectProducts]);
 
@@ -58,7 +60,7 @@ const CkeckoutPage = () => {
     <div className=" dark:bg-gray-900  mb-4 rounded-lg ">
       {selectProducts.length === 0 ? (
         <div className="h-60 w-100 bg-gray-500 rounded-lg gap-2 flex flex-col justify-center items-center text-white text-center" >
-          <img className="h-20" src="/logo1.png" />
+          <img className="h-20" src="/rafstore.png" />
           <p className="text-xl">Votre panier est vide!</p>
           <p className="font-mono">Veillez parcourir nos catégories pour voir nos différents offres</p>
           <Link href={`/`}>
@@ -200,3 +202,15 @@ const CkeckoutPage = () => {
 };
 
 export default CkeckoutPage;
+
+export const getServerSideProps = async () => {
+  await connectMongo();
+  const products = await Product.find();
+
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+    },
+  };
+};
+
