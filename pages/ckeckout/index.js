@@ -9,6 +9,8 @@ import Link from "next/link";
 import SeeRescent from "../../components/SeeRescent";
 import connectMongo from "../../lib/connectMongo";
 import Product from "../../models/Products";
+import { motion } from "framer-motion";
+
 
 const CkeckoutPage = ({products}) => {
   const { selectProducts, setSelectProducts } = useContext(ProductContext);
@@ -37,7 +39,6 @@ const CkeckoutPage = ({products}) => {
     if (selectProducts?.length > 0) {
       const uniqIds = [...new Set(selectProducts)];
       const filteredProducts = products.filter((product) => uniqIds.includes(product._id.toString()));
-      console.log('card',filteredProducts)
       setProductInfo(filteredProducts)
     }
   }, [selectProducts]);
@@ -72,7 +73,11 @@ const CkeckoutPage = ({products}) => {
 
         <div class="flex justify-between  items-start gap-4 max-md:flex-col p-2 ">
 
-          <div class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
+           <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+           class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
             <h3 className="border-b border-orange-500 font-bold text-xl p-2 pb-1">Panier</h3>
             {productInfo.map((product) => {
               const name = product?.name;
@@ -127,7 +132,7 @@ const CkeckoutPage = ({products}) => {
                 </div>
               )
             })}
-          </div>
+          </motion.div>
 
           {/* PARTIE RESUME DU PANIER */}
           <div className="flex flex-col gap-4 max-md:w-full ">
