@@ -40,8 +40,22 @@ export function ProductContextProvider({ children }) {
       setSelectProducts(id);
     }
   }
+
+  //notification added to cart
+
+  const notify = (result) =>
+        toast.info(result, {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+
   function addProductCart(id) {
-    toast.success(`produit ajouté panier!`);
+    notify(`produit ajouté au panier!`);
     if (typeof selectProducts !== 'undefined') {
       setSelectProducts((prev) => [...prev, id]);
     } else {

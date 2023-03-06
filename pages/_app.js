@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function MyApp({ Component, pageProps }) {
   return (
     <ProductContextProvider>
-      <ToastContainer position="top-right" autoClose={1000} />
+      <ToastContainer  />
       <Layout >
         <Component {...pageProps} />
       </Layout>

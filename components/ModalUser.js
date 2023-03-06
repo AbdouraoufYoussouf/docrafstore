@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Sentry from "react-activity/dist/Dots";
 import "react-activity/dist/Dots.css";
 
@@ -60,24 +60,8 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
 
     const [loding, setLoding] = useState(false);
 
-    const notify = (result) =>
-        toast.info(result, {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-
-        //reset form
-        const formRef = useRef(null);
-
-  const handleReset = () => {
-    formRef.current.reset();
-  };
-
+    
+ 
     return (
         <div className="modal-container">
             <span className="hidden"> modal</span>
@@ -89,7 +73,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                     </button>
                 </div>
                 <div className="flex justify-between items-center ">
-                    <form ref={formRef} action="api/products/checkout" method="POST" onsubmit="event.preventDefault(); handleSubmit(event)">
+                    <form  action="api/products/checkout" method="POST" onsubmit="event.preventDefault(); handleSubmit(event)">
                         <div>
                             <input
                                 name="name"
@@ -103,7 +87,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 className={
                                     nameError
                                         ? "border-b  form-input rounded-lg px-4 py-2 border-red-500 mt-3"
-                                        : " form-input text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
+                                        : " form-input text-gray-800 dark:text-white rounded-lg px-4 py-2 mt-3 border-cyan-400"
                                 }
                                 placeholder="Full Name"
                             />
@@ -162,13 +146,12 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                             name="products"
                             value={selectProducts.join(",")}
                         />
-                        <div className="flex items-center justify-between" > 
 
                         {!loding ? (<button type="submit" disabled={!isFormValid}
                          className={
                             !isFormValid
-                                ? " px-5 py-2 mt-4 rounded-xl shadow-emerald-700 shadow-lg text-white font-bold bg-gray-300 dark:bg-gray-400 "
-                                : "bg-emerald-500 cursor-pointer px-5 py-2 mt-4 rounded-xl shadow-emerald-700 shadow-lg text-white font-bold"
+                                ? " px-5 py-2 mt-4 w-full rounded-xl shadow-emerald-700 shadow-lg text-white font-bold bg-gray-300 dark:bg-gray-400 "
+                                : "bg-emerald-500 w-full cursor-pointer px-5 py-2 mt-4 rounded-xl shadow-emerald-700 shadow-lg text-white font-bold"
                         }
                                 > Payé {total} €</button>
                         ) : (
@@ -185,9 +168,7 @@ const ModalUser = ({ total, selectProducts, toggleModal }) => {
                                 <Sentry color="white" size={25} speed={1} animating={true} />
                             </div>
                         )}
-                        <button type='button' onClick={handleReset} className="cursor-pointer px-5 py-2 mt-4 rounded-xl shadow-emerald-900 shadow-lg text-white font-bold bg-rose-300 dark:bg-rose-400 " >
-                        Réinitialiser</button>
-                        </div>
+                       
                     </form>
                 </div>
             </div>
