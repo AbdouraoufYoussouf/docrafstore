@@ -8,7 +8,7 @@ const HeroHeader = ({ heroBanner }) => {
   let images = heroBanner?.images
   const path = name?.split(" ").join("_");
   return (
-    <div className="w-full relative  flex justify-between items-start my-2 rounded-lg heroheader max-lg:p-3 max-xm:p-2">
+    <div className="w-full relative  flex justify-between items-start my-2 rounded-lg hero-home max-lg:p-3 max-xm:p-2">
       <div className="flex h-full flex-col items-start justify-around gap-1 text-gray-500 max-xm:justify-between" >
         <div className="italic uppercase flex flex-col justify-center items-start gap-px font-andale text-white max-xm:gap-[14px] max-xm:mt-2 ">
 
@@ -31,9 +31,8 @@ const HeroHeader = ({ heroBanner }) => {
         <img className="img" src={images && images[0]} />
       </div>
       <div className="flex h-full flex-col items-center justify-between " >
-        <div className="bg-tomato text-white flex flex-col text-[25px] p-3 rounded-lg  ">
-          <span >50%</span>
-          <span className="font-bold">OFF</span>
+        <div className="bg-tomato text-white  text-[20px] p-3 rounded-lg  ">
+          <span >- 50%</span>
         </div>
         <div className="flex gap-0.5">
           <FaFacebook className="social" />

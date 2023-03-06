@@ -55,7 +55,7 @@ const CkeckoutPage = () => {
     setShow(!show);
   };
   return (
-    <div className=" dark:bg-gray-900 h-full mb-4 rounded-lg h-screen">
+    <div className=" dark:bg-gray-900  mb-4 rounded-lg ">
       {selectProducts.length === 0 ? (
         <div className="h-60 w-100 bg-gray-500 rounded-lg gap-2 flex flex-col justify-center items-center text-white text-center" >
           <img className="h-20" src="/logo1.png" />
@@ -129,7 +129,7 @@ const CkeckoutPage = () => {
 
           {/* PARTIE RESUME DU PANIER */}
           <div className="flex flex-col gap-4 max-md:w-full ">
-            <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky max-md:mb-16 top-0 max-md:relative max-md:w-full">
+            <div class="bg-gray-200 dark:bg-gray-800  w-60 rounded-lg sticky  top-0 max-md:relative max-md:w-full">
               <h3 className="border-b font-bold text-xl capitalize border-orange-500 p-2 pb-1">Resumé du Panier</h3>
               <div className="p-4 pt-2">
                 <div >

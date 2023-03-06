@@ -1,54 +1,39 @@
-import Link from "next/link";
 import React from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaBlenderPhone,
-  FaTiktok,
-} from "react-icons/fa";
+import Link from "next/link";
+import { SlCallIn } from "react-icons/sl";
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
-const BanerMobiles = () => {
+const BanerMobile = ({ heroBanner }) => {
+  let name = heroBanner?.name
+  const path = name?.split(" ").join("_");
   return (
-    <div className="flex w-full justify-between h-v6 rounded-lg p-4 max-sm:p-1 bg-deg relative ">
-      <div className=" flex flex-1 justify-between max-md:justify-center max-sm:flex-col-reverse ">
-        <div className="flex flex-col grow justify-between items-start p-5 ">
-          <p className="font-black uppercase text-4xl text-white max-lg:text-3xl max-lg:absolute max-lg:top-5 max-md:text-xl">
-            the best of the best</p>
-          <div className="flex justify-center bac-text rounded-full text-center gap-4 text-white font-bold text-3xl max-md:text-lg bg-rose-500 p-3  top-32 left-25 max-lg:absolute max-md:top-14   max-lg:left-20 max-sm:left-5">
-            <span>70%</span>
-            <span>OFF</span>
-          </div>
-          <div className="flex items-center gap-5 max-md:gap-2 max-lg:absolute max-lg:bottom-5 max-sm:bottom-0">
-            <FaBlenderPhone className="text-3xl " color='tomato' />
-            <div className="flex flex-col items-start">
-              <p className="italic capitalize text-sm w-full text-gray-700 z-10">Appel pour livraison</p>
-              <p className="font-bold font-conso text-2xl text-gray-700 max-lg:text-lg">0633851644</p>
-            </div>
-          </div>
-        </div>
-        <div className="flex">
+    <div className="w-full relative h-[300px] flex justify-between items-start mt-1 rounded-lg heroheader max-lg:p-3 max-xm:p-2">
+      <div className="flex h-full flex-col items-start justify-around gap-1 text-gray-500 max-xm:justify-between" >
+        <div className="italic uppercase flex flex-col justify-center items-start gap-px font-andale text-white max-xm:gap-[14px] max-xm:mt-2 ">
 
-        <img src="/products/mobiles/iphone14/1.png" className=" p-3 absolute left-[300px] top-20 max-lg:hidden h-v3" />
-        <img src="/products/mobiles/galaxyz/1.png" className=" p-3 flex-1 h-[80%] max-xx:h-auto max-sm:absolute max-lg:w-1/2 max-lg:h-[80%] self-center bottom-12" />
+          <p className="font-bold text-[25px] text-gray-200 dark:text-gray-300 max-xm:text-[20px]">model haut gamme</p>
+          <h2 className="font-900 text-[40px] text-box-md  tomato max-lg:text-[30px] max-xm:text-[22px]  ">casque bluetooth</h2>
+          <p className=" text-lg max-md:text-sm">aujourd’hui derniere offre </p>
+          <Link href={`/product/${path}`} className=" ">
+            <button className="font-bold text-lg text-white py-[8px] px-[15px] uppercase rounded-lg text-white z-10 max-lg:text-[18px] max-xm:text-[14px] max-xm:p-[7px] bg-tomato">Voir le produit</button>
+          </Link>
+        </div>
+        <div className="flex justify-center items-start gap-1 text-white">
+          <SlCallIn className="self-center text-[35px] tomato max-xm:text-[25px]  " />
+          <span className="flex flex-col gap-px self-center">
+            <p className="font-tury uppercase z-10 max-xm:text-[14px] ">Appel pour livraison</p>
+            <p className="font-900 text-lg font-mono">0633851644</p>
+          </span>
         </div>
       </div>
-
-      <div className="flex flex-col p-4 justify-around items-start max-lg:items-end max-sm:mt-10">
-        <div className="flex flex-col gap-1 max-sm:items-end ">
-          <h2 className="font-conso uppercase text-3xl text-white max-md:text-2xl max-sm:text-lg">Nouvelles gamme</h2>
-          <h1 className="uppercase font-tury text-5xl font-black text-red-500 z-10 max-md:text-3xl max-lg:text-4xl">
-            Smartphones
-          </h1>
-          <p className="capitalize font-roma text-lg italic text-white">
-            Today's Super offre
-          </p>
+      <div className="center-baner " >
+        <img className=" img max-xx:h-[50%]  "  src={"/products/mobiles/galaxyz/1.png"} />
+      </div>
+      <div className="flex h-full flex-col items-center justify-between " >
+        <div className="bg-tomato text-white flex flex-col text-[25px] p-2 rounded-lg  ">
+          <span >-50%</span>
         </div>
-        <Link href={'#mobiles'} >
-        <button className="p-2 bg-red-500 font-bold uppercase text-white rounded-lg z-10 hover:transform hover:scale-110 transition-transform duration-500 ease-in-out">
-          Order Now
-        </button>
-        </Link>
-        <div className="flex gap-2 justify-center self-center max-md:self-end">
+        <div className="flex gap-0.5">
           <FaFacebook className="social" />
           <FaInstagram className="social" />
           <FaTiktok className="social" />
@@ -58,5 +43,4 @@ const BanerMobiles = () => {
   );
 };
 
-export default BanerMobiles;
-
+export default BanerMobile;

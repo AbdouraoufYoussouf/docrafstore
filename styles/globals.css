@@ -14,7 +14,18 @@
   
   .heroheader {
     background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
-    height:400px;
+    height:250px;
+    padding: 30px 40px;
+    line-height: 0.9;
+  }
+  .hero-home {
+    background-image: linear-gradient(to right top, #d16ba5, #a85f9b, #80538c, #5b4778, #3a3961, #32426a, #294b71, #1f5476, #1b7b9d, #19a4c0, #32cfdc, #5ffbf1);
+    height:350px;
+    padding: 30px 40px;
+    line-height: 0.9;
+  }
+  .bg-pc {
+    background-image: linear-gradient(to right top, #342e31, #3f333c, #48384b, #4c3f5c, #4a476e, #3b486f, #28496f, #0d4a6d, #004057, #003642, #042a2e, #0b1f1e);    height:250px;
     padding: 30px 40px;
     line-height: 0.9;
   }
@@ -56,7 +67,7 @@
   h2 {
     color: hsl(244, 16%, 43%);
     font-weight: bold;
-    font-size: 0px;
+    font-size: 20px;
   }
   
   .dark h2 {
@@ -149,7 +160,8 @@
 }
 
 .h-v6{
-  height: 400px;
+  height: 280px;
+  
 }
 .max-h-v5{
   max-height: 450px;
@@ -264,6 +276,12 @@
   outline: none;
   z-index: 1;
 }
+.form-search{
+  background-color: rgba(229, 231, 235, 0.8);
+  width:100%;
+  outline: none;
+  z-index: 1;
+}
 input::placeholder {
   color: black; 
   opacity:0.6
@@ -274,6 +292,13 @@ input::placeholder {
 }
 .dark .form-input{
   width: 100%;
+  box-shadow: 0px 0px 5px 1px rgb(69 67 96);
+  background-color: rgba(55, 65, 81, 0.6);
+  outline: none;
+  border-width:0.1px;
+  z-index: 1;
+}
+.dark .form-search{
   box-shadow: 0px 0px 5px 1px rgb(69 67 96);
   background-color: rgba(55, 65, 81, 0.6);
   outline: none;
@@ -298,9 +323,9 @@ height: 116%;
 @media screen and (max-width:800px) {
   .img{
     position: absolute;
-    height: 70%;
+    height: 90%;
     bottom: 10px;
-    right: 50px;
+    right: 80px;
   }
 }
 @media screen and (max-width:500px) {
@@ -331,3 +356,4 @@ height: 116%;
 }
 
 }
+

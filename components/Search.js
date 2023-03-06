@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 
-const Search = ({ products, setData,setSearch }) => {
+const Search = ({ products, setData,setSearch  }) => {
 
   const [phrase, setPhrase] = useState('')
 
@@ -20,7 +20,7 @@ const Search = ({ products, setData,setSearch }) => {
   return (
     <input placeholder="Search..."
       value={phrase} onChange={e => handleSearch(e)}
-      className="form-input rounded-lg mx-2 px-2 " />
+      className="form-search rounded-lg p-2 h-full " />
   )
 }
 

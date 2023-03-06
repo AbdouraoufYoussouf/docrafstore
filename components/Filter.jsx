@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { BsFilterSquare } from 'react-icons/bs'
 import { RiMoneyPoundCircleLine } from 'react-icons/ri'
 import { motion } from "framer-motion";
+import Search from "./Search";
+import { FaTimes } from "react-icons/fa";
 
 
 const prixData = [
@@ -13,7 +15,8 @@ const prixData = [
   { min: 1000, max: 2000, label: "1000€ à 2000€" },
   { min: 2000, max: 100000000, label: "Plus 2000€" }
 ];
-const Filter = ({ data, setData,category}) => {
+const Filter = ({ data, setData, category, products }) => {
+  const [phrase, setPhrase] = useState('')
 
   const [showfiltrer, setShowfiltrer] = useState(true)
   const [isShowfiltrer, setIsShowfiltrer] = useState(false)
@@ -28,6 +31,21 @@ const Filter = ({ data, setData,category}) => {
     data.filter(product => product.category === category)
       .map(product => product.marque)
   ));
+
+  //trier les donné par prix
+  const [lastSort, setLastSort] = useState(null);
+
+  const sortByPrice = () => {
+    let newSort;
+    if (lastSort === "asc") {
+      newSort = "desc";
+      setData([...data].sort((a, b) => b.price - a.price));
+    } else {
+      newSort = "asc";
+      setData([...data].sort((a, b) => a.price - b.price));
+    }
+    setLastSort(newSort);
+  };
 
   // Fonction qui gere les marques cochés ou decochés
   var handleMarque = (e) => {
@@ -64,7 +82,7 @@ const Filter = ({ data, setData,category}) => {
   // la data selon les marques selectionnés et  prix selection
   function filterProducts(products, marqueFilters, priceFilters) {
     let filtered = [...products];
-  
+
     if (marqueFilters.length > 0) {
       filtered = filtered.filter(product => {
         for (const filter of marqueFilters) {
@@ -75,7 +93,7 @@ const Filter = ({ data, setData,category}) => {
         return false;
       });
     }
-  
+
     if (priceFilters.length > 0) {
       filtered = filtered.filter(product => {
         for (const filter of priceFilters) {
@@ -86,7 +104,7 @@ const Filter = ({ data, setData,category}) => {
         return false;
       });
     }
-  
+
     return filtered;
   }
 
@@ -94,17 +112,15 @@ const Filter = ({ data, setData,category}) => {
     const filtered = filterProducts(data, marqFiltered, priceFiltered);
     setData(filtered);
   }, [isMarque, isPrice]);
-  
+
   // hide filter
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width > 768) {
         setShowfiltrer(true);
-        setIsShowfiltrer(true)
       } else {
         setShowfiltrer(false);
-        setIsShowfiltrer(false)
       }
     };
     window.addEventListener('resize', handleResize);
@@ -115,20 +131,32 @@ const Filter = ({ data, setData,category}) => {
 
   return (
     <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
-    
-    className="w-[230px] md:min-h-90 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 p-1 flex flex-col sticky top-0  max-md:w-full "  >
-      <div onClick={()=>setShowfiltrer(!showfiltrer)} className="flex  cursor-pointer md:hidden justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
 
-        <BsFilterSquare onClick={()=>setShowfiltrer(!showfiltrer)} className="hover:text-red-600" size={30} />
-        <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
+      className="w-[230px] md:min-h-90 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-600 dark:text-gray-300 p-1 flex flex-col sticky top-0  max-md:w-full "  >
+      <div className="flex items-center  md:hidden justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
+        <div className='cursor-pointer'>
+          {
+            showfiltrer ? (<FaTimes onClick={() => setShowfiltrer(false)}
+              className="hover:text-blue " size={30} />) : (
+              <BsFilterSquare onClick={() => setShowfiltrer(true)}
+                className="hover:text-blue " size={30} />
+            )
+          }
+        </div>
+        <div className='md:hidden flex-1 mx-2 '>
+          <Search setData={setData} setSearch={setPhrase} products={products} />
+        </div>
+        <RiMoneyPoundCircleLine onClick={sortByPrice} className="cursor-pointer hover:text-red-600" size={34} />
       </div>
+
       <div className="flex max-md:hidden cursor-pointer justify-between hover:bg-gray-200 dark:hover:bg-gray-600 hover:rounded-lg p-1 " >
 
-        <BsFilterSquare  className="hover:text-red-600 " size={30} />
-        <RiMoneyPoundCircleLine className="hover:text-red-600" size={34} />
+        <BsFilterSquare className="hover:text-red-600 " size={30} />
+        <RiMoneyPoundCircleLine onClick={sortByPrice} className="cursor-pointer hover:text-red-600" size={34} />
+
       </div>
       {
         showfiltrer &&
@@ -149,7 +177,7 @@ const Filter = ({ data, setData,category}) => {
                         value={marq}
                         className="form-checkbox h-4 w-4"
                       />
-                      <h5 className="capitalize text-xm font-bold font-tury text-gray-500 dark:text-gray-400">{marq}</h5>
+                      <h5 className="capitalize text-xm font-bold font-tury text-gray-600 dark:text-gray-400">{marq}</h5>
                     </div>
                   )
               )}
@@ -168,7 +196,7 @@ const Filter = ({ data, setData,category}) => {
                     onChange={handlePriceChange}
                     className="form-checkbox h-4 w-4"
                   />
-                  <h5 className="italic text-lg font-tury font-bold text-gray-400">{range.label}</h5>
+                  <h5 className="italic text-lg font-tury font-bold text-gray-600 dark:text-gray-400">{range.label}</h5>
                 </div>
               ))}
             </div>

@@ -7,6 +7,7 @@ import Product from "../models/Products"
 import { GrLinkNext } from "react-icons/gr"
 import Search from "../components/Search"
 import ThemeToggle from "../components/ThemeToggle"
+import Reglement from "../components/Reglement"
 
 export default function Home({ products }) {
   const [data, setData] = useState(products)
@@ -43,10 +44,13 @@ export default function Home({ products }) {
   }, [count, limit]);
 
   return (
-    <div>
+    <div className="flex flex-col">
       <div className="flex">
         <img src="/rafstore.png" className="bg-gray4-500 rounded" style={{ width: 40 }} />
+        <div className="mx-2 flex-1">
+          
         <Search setData={setData} products={products} setSearch={setIsSearch} />
+        </div>
        <ThemeToggle/>
 
       </div>
@@ -61,7 +65,7 @@ export default function Home({ products }) {
                     <h2 className="text-2xl text-white font-bold capitalize">{categorie}</h2>
                     <Link href={`/${categorie}`}>
                       <span className="flex items-center gap-2 bg-red-500 text-white font-bold p-1 px-2 rounded-lg cursor-pointer">Voir plus
-                        <GrLinkNext className="text-white-important" />
+                      &rarr;
                       </span>
                     </Link>
                   </div>
@@ -80,6 +84,10 @@ export default function Home({ products }) {
           ))
         }
 
+      </div>
+      <div className="flex flex-col justify-center xl:w-[90%] self-center ">
+        <h2 className="text-3xl mt-4">Pour plus d'information</h2>
+      <Reglement />
       </div>
     </div>
   )
