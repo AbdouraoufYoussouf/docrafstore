@@ -18,7 +18,7 @@ const prixData = [
 const Filter = ({ data, setData, category, products }) => {
   const [phrase, setPhrase] = useState('')
 
-  const [showfiltrer, setShowfiltrer] = useState(false)
+  const [showfiltrer, setShowfiltrer] = useState(true)
   const [isShowfiltrer, setIsShowfiltrer] = useState(false)
 
   var [priceFiltered, setPriceFiltered] = useState([]);
@@ -113,21 +113,7 @@ const Filter = ({ data, setData, category, products }) => {
     setData(filtered);
   }, [isMarque, isPrice]);
 
-  // hide filter
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width > 768) {
-        setShowfiltrer(true);
-      } else {
-        setShowfiltrer(false);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+ 
 
   return (
     <motion.div
