@@ -18,7 +18,7 @@ const prixData = [
 const Filter = ({ data, setData, category, products }) => {
   const [phrase, setPhrase] = useState('')
 
-  const [showfiltrer, setShowfiltrer] = useState(true)
+  const [showfiltrer, setShowfiltrer] = useState(false)
   const [isShowfiltrer, setIsShowfiltrer] = useState(false)
 
   var [priceFiltered, setPriceFiltered] = useState([]);
