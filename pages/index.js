@@ -86,7 +86,7 @@ export default function Home({ products }) {
 
       </div>
       <div className="flex flex-col justify-center xl:w-[90%] self-center ">
-        <h2 className="text-3xl mt-4">Pour plus d'information</h2>
+        <h2 className="text-3xl max-lg:text-lg mt-4">Pour plus d'information</h2>
       <Reglement />
       </div>
     </div>
