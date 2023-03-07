@@ -11,7 +11,8 @@ const Footer = () => {
   const router = useRouter();
   const path = router.pathname;
   const { selectProducts } = useContext(ProductContext);
-  let length = selectProducts?.length;
+  const uniqIds = [...new Set(selectProducts)];
+  let length = uniqIds?.length;
 
   return (
     <div className="flex justify-center items-center gap-2 fixed bottom-0 p-1 bg-gray-200 dark:bg-gray-800 w-full border-t-2 border-t-cyan-400 ">
