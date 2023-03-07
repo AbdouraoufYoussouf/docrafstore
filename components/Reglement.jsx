@@ -7,7 +7,7 @@ import { FaPhone } from "react-icons/fa";
 const Reglement = () => {
 
   return (
-    <div className=" grid grid-cols-1 ss:grid-cols-2  md:grid-cols-3  lg:grid-cols-4 xg:grid-cols-4 xl:grid-cols-4 justify-center ">
+    <div className=" grid grid-cols-1   md:grid-cols-3  lg:grid-cols-4 xg:grid-cols-4 xl:grid-cols-4 justify-center ">
       <div class="m-4 p-5 bg-gray-200 dark:bg-gray-800 text-left text-current  no-underline border border-gray-700 dark:border-gray-300  rounded-lg transition duration-150 ease-in-out flex flex-col justify-center items-center gap-4 hover:text-blue-500 hover:border-blue-500"
 >
         <div className="text-4xl  rounded-full  flex items-center justify-center">
