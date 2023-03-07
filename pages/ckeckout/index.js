@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../components/ProductContext";
-import { FaPlusSquare, FaMinusSquare ,FaCcPaypal} from "react-icons/fa";
+import { FaPlusSquare, FaMinusSquare, FaCcPaypal } from "react-icons/fa";
 import { GrPaypal } from "react-icons/gr";
-import { RiDeleteBin5Line,RiSecurePaymentFill } from "react-icons/ri";
+import { RiDeleteBin5Line, RiSecurePaymentFill } from "react-icons/ri";
 import { MdDeliveryDining } from "react-icons/md";
 import ModalUser from "../../components/ModalUser";
 import Link from "next/link";
@@ -12,8 +12,8 @@ import Product from "../../models/Products";
 import { motion } from "framer-motion";
 
 
-const CkeckoutPage = ({products}) => {
-  const { selectProducts, setSelectProducts } = useContext(ProductContext);
+const CkeckoutPage = ({ products }) => {
+  const { selectProducts, addProductSee, setSelectProducts } = useContext(ProductContext);
   const [productInfo, setProductInfo] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -73,11 +73,11 @@ const CkeckoutPage = ({products}) => {
 
         <div class="flex justify-between  items-start gap-4 max-md:flex-col p-2 ">
 
-           <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, ease: "easeOut" }}
-           class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            class="bg-gray-200 dark:bg-gray-800  flex-1 rounded-lg">
             <h3 className="border-b border-orange-500 font-bold text-xl p-2 pb-1">Panier</h3>
             {productInfo.map((product) => {
               const name = product?.name;
@@ -86,7 +86,7 @@ const CkeckoutPage = ({products}) => {
                 <div key={product._id} className="flex p-4 rounded-lg shadow relative">
                   <div className="bg-gray-300 dark:bg-gray-900 p-3 flex rounded-xl shrink-0">
                     <Link className="" href={`/product/${path}`}>
-                      <img className="w-28 cursor-pointer w-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
+                      <img onClick={()=>addProductSee(product._id)} className="w-28 cursor-pointer w-32 self-center max-lg:w-28 max-sm:w-20" src={product.images[2]} alt={product.name} />
                     </Link>
                   </div>
 
