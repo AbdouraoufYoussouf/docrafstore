@@ -49,7 +49,7 @@ console.log('data',req.body)
     mode: 'payment',
     customer_email: email,
     success_url: `${req.headers.origin}/?success=true`,
-    cancel_url: `${req.headers.origin}/checkout`,
+    cancel_url: `${req.headers.origin}/?cancel=true`,
     metadata: { orderId:order._id.toString()},
   });
   res.redirect(303, session.url);
